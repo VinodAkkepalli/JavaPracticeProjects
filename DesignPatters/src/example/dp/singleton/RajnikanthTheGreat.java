@@ -1,38 +1,40 @@
 package example.dp.singleton;
 
-import java.util.Random;
+/**
+ * 
+ * @author VinodAkkepalli
+ *	
+ *	Program to demonstrate that a singleton class creates only one object and
+ *	returns the reference to same object if multiple attempts are made to create multiple objects	
+ *
+ *	This class is the Singleton class
+ *	
+ */
 
-public class RajnikanthTheGreat implements Runnable {
+public class RajnikanthTheGreat{
 
-	private int count;
-	private String name;
-	private static RajnikanthTheGreat oneRajniOb;
+	// object is made volatile to make sure that its state is visible to all thread
+	private static volatile RajnikanthTheGreat oneRajniOb;
+	String nameIs;	// to store name of the thread which created Rajnikanth
 	
 	private RajnikanthTheGreat(String name){
-		this.name = name;
-		count = 0;
-		//System.out.println("The one and only " + count);
+		this.nameIs = name;
 	}
 	
-	public static synchronized RajnikanthTheGreat getInstance(String name){
+	public static RajnikanthTheGreat getInstance(String name){
+		
+		//Double Checked Locking for Singleton Creation to ensure thread safety
+		//Observe that null checking if performed twice here
 		if(oneRajniOb == null){
-			oneRajniOb = new RajnikanthTheGreat(name);
+		
+			synchronized(RajnikanthTheGreat.class){
+				if(oneRajniOb == null){
+					oneRajniOb = new RajnikanthTheGreat(name);
+				}
+			}
+			
 		}
 		return oneRajniOb;
 	}
 	
-	String getName(){
-		return name;
-	}
-
-	@Override
-	public void run() {
-		try {
-			Thread.sleep(new Random().nextInt(10000));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		RajnikanthTheGreat.getInstance("Rajni" + new Random().nextInt(100));
-	}
 }
