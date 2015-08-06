@@ -1,6 +1,6 @@
 package example.dp.factory;
 
-public class FactoryDesignPattern {
+public class FactoryDPTester {
 
 	public static void main(String[] args) {
 		
