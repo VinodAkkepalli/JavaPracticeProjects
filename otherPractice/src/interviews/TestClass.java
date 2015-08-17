@@ -9,27 +9,21 @@ import java.io.InputStreamReader;
 */
 
 class TestClass {
-    public static void main(String args[] ) throws Exception {
-        /*
-         * Read input from stdin and provide input before running
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line = br.readLine();
-        int N = Integer.parseInt(line);
-        for (int i = 0; i < N; i++) {
-            System.out.println("hello world");
-        }
-        */
-
-    	Integer[] a = CountMethod("I love proGramming!!");
-    	//Integer[] a = CountMethod("AazZ");
+    @SuppressWarnings("null")
+	public static void main(String args[] ) throws Exception {
+        
+    	StringBuilder sb = new StringBuilder("abcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijk");
     	
-    	for (int i = 0 ; i < 26; i++) {
-    		System.out.print(a[i] + " ");
+    	StringBuilder resultString = new StringBuilder();
+    	int n = 10;
+    	int len = sb.length();
+    	while(n < len){
+    		resultString.append(sb.charAt(n));
+    		System.out.println(sb.charAt(n));
+    		n+=10;
     	}
-        	
     	
-    	
+    	System.out.println(resultString);
         System.out.println("Hello World!");
     }
     
