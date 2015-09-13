@@ -19,17 +19,30 @@ import java.util.Arrays;
 public class Fibonacci {
 
 	long[] fibArr;
+	private static int[] fibArr1;
 	
 	public static void main(String[] args) {
 		
-		int n = 46;
+		int n = 20;
 		Fibonacci ob = new Fibonacci();
 		ob.fibArr = new long[n];
 		
+		// using Dynamic programming approach
 		ob.fibMem(n);
 		System.out.println("Fibonacci sequence using DP is = " + Arrays.toString(ob.fibArr));
 		System.out.println("Fibonacci value using DP is = " + ob.fibArr[n-1]);
 		
+		// using Dynamic programming approach with backtracking
+		fibArr1 = new int[n];
+		Arrays.fill(fibArr1,-1);
+		fibArr1[0] = 0;
+		fibArr1[1] = 1;
+		
+		fibMemBack(n-1);
+		System.out.println("Fibonacci sequence using DP backtrack is = " + Arrays.toString(fibArr1));
+		System.out.println("Fibonacci value using DP backtrack is = " + fibArr1[n-1]);
+		
+		// using simple recursion; significantly slower
 		System.out.println("Fibonacci value using simple recursion is = " + ob.fibRec(n-1));
 	}
 
@@ -41,6 +54,16 @@ public class Fibonacci {
 		for (int i = 2; i<n; i++){
 			fibArr[i] = fibArr[i-1]+fibArr[i-2];
 		}
+		 
+	}
+	
+	// Uses Dynamic programming memorization technique with backtracking
+	private static int fibMemBack(int n) {
+	
+		if(fibArr1[n] != -1)
+			return fibArr1[n];
+		
+		return fibArr1[n] = ( fibMemBack(n-1) + fibMemBack(n-2) );
 		 
 	}
 	
