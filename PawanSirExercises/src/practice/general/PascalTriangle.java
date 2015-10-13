@@ -5,6 +5,7 @@ package practice.general;
  * @author Vinod Akkepalli
  *
  * Pascal Triangle
+ * http://www.geeksforgeeks.org/pascal-triangle/
  *	input : 6
  *
  *	output:
@@ -21,10 +22,62 @@ public class PascalTriangle {
 
 	public static void main(String[] args) {
 		
-		printPascal(6);
+		// O(n^3). calculates c(n,r) to calculate values
+		printPascal(6); 
+		
+		// O(n^2). uses dynamic programming to avoid recalculations
+		// O(n^2). uses a 2D array to store calculated values 
+		printPascalDP(7);
+		
+		// O(n^2). uses dynamic programming to avoid recalculations
+		// O(1). uses a 2D array to store calculated values 
+		printPascalDPOpt(8);
 	}
 
-	//Method print a Pascal triangle
+	private static void printPascalDPOpt(int n) {
+
+		int val = 1;
+		for(int i=0; i<n;i++){
+			for(int j=1; j <= n - i; j++){
+				System.out.print(" ");
+			}
+			for(int j=0; j<=i; j++){
+				
+				if(j == 0 || j == i){
+					val = 1;
+				}else{
+					val = val * (i-j+1)/j;
+				}
+					
+				System.out.print(val +" ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+	private static void printPascalDP(int n) {
+
+		int[][] arr = new int[n][n];
+		
+		for(int i=0; i<n;i++){
+			for(int j=1; j <= n - i; j++){
+				System.out.print(" ");
+			}
+			for(int j=0; j<=i; j++){
+				
+				if(j == 0 || j == i){
+					arr[i][j] = 1;
+				}else{
+					arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+				}
+					
+				System.out.print(arr[i][j] +" ");
+			}
+			System.out.println();
+		}
+	}
+
 	private static void printPascal(int n){
 
 		for(int i=0; i<n; i++){
