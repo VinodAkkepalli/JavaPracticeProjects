@@ -1,7 +1,10 @@
 package codingcontest;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
@@ -42,36 +45,48 @@ import java.io.InputStreamReader;
 	Sample Output(Plaintext Link)
 	 2
  
- *
+ *	Solution Approach:
+ *	store the (reverse, number of times occurred) of strings in a HashMap and in one pass find the answer
  *
  */
 
 public class PalindromeStringPairs {
 
-    public static void main(String args[] ) throws Exception {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Map<String, Integer> hashMap =  new HashMap<String, Integer>();
+        String str, revStr;
+        long palinCount = 0;
+        int count = 0;
+        Integer revCount = 0;
         
-    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line = br.readLine();
         int N = Integer.parseInt(line);
-        String[] S = new String[N];
-        String[] rS = new String[N];
+        str = br.readLine();
+        hashMap.put((new StringBuilder(str).reverse().toString()),1);
         
-        for (int i = 0; i < N; i++) {
-            S[i] = br.readLine();
-            rS[i] = new StringBuilder(S[i]).reverse().toString();
-        }
-
-        int palinCount = 0;
-        
-        for(int i = 0; i < N; ++i){
-        	for(int j = i+1; j < N; ++j){
-        		if(S[i].equals(rS[j])){
-        			palinCount++;
+        for(int i = 0; i < N-1; i++){
+        	
+        	str = br.readLine();
+        	revStr = new StringBuilder(str).reverse().toString();
+        	
+        	if(hashMap.containsKey(str)){
+        		
+        		count = hashMap.get(str);
+        		revCount = hashMap.get(revStr);
+        		palinCount = palinCount + count;
+        		
+        		if(revCount == null){
+        			hashMap.put(revStr, 1);
+        		}else{
+        			hashMap.put(revStr, revCount+1);
         		}
+        		
+        	}else{
+        		hashMap.put(revStr, 1);
         	}
         }
         
         System.out.println(palinCount);
-    }
-	
+	}
 }
