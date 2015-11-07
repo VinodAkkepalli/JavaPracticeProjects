@@ -28,7 +28,6 @@ public class LargestSubstringWithNAlphabets {
 		System.out.println("Largest substring of N alphabets is: " + subStringN(str, N));
 	}
 
-	@SuppressWarnings("null")
 	private static String subStringN(String str, int N){
         
 		// variable to store starting location of the substring

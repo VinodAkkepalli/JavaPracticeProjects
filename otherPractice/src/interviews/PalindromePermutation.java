@@ -1,7 +1,5 @@
 package interviews;
 
-import java.util.Arrays;
-
 /**
  * 
  * @author Vinod Akkepalli

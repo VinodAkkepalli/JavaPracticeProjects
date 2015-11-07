@@ -1,10 +1,5 @@
 package interviews;
 
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 /**
  * 
@@ -69,10 +64,9 @@ public class AlternatingCharacters {
 		for(String str: strings){
 			count = 0;
 			
-			for(int i=1, j=0; i<str.length();i++,j++){
+			for(int i=1; i<str.length();i++){
 				if(str.charAt(i) == str.charAt(i-1)){
 					count++;
-					j--;
 				}
 			}
 			System.out.println(count);
