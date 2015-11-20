@@ -14,6 +14,10 @@ public class OddEvenPrintTester {
 
     public static void main(String ... args){
         Printer print = new Printer();
+
+        //Two threads are created here, One to print all odd numbers
+        //and another to print all even numbers 
+        //using same Runnable class TaskEvenOdd
         Thread t1 = new Thread(new TaskEvenOdd(print, 20, "Odd"));
         Thread t2 = new Thread(new TaskEvenOdd(print, 20, "Even"));
         t1.start();

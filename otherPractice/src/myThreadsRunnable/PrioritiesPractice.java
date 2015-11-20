@@ -1,16 +1,16 @@
-package myThreads;
+package myThreadsRunnable;
 
 
 public class PrioritiesPractice implements Runnable{
 
 	public static void main(String[] args) {
-	//	(new PrioritiesPractice()).start();
+		(new Thread(new PrioritiesPractice())).start();
 		System.out.println("Main Thread");
 	}
 
 	@Override
 	public void run() {
-		Thread.currentThread().setPriority(10);
+		Thread.currentThread().setPriority(6);
 		System.out.println("child Thread priority : " + Thread.currentThread().getPriority());
 	}
 

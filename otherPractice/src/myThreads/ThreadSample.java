@@ -1,5 +1,13 @@
 package myThreads;
 
+/**
+ * 
+ * @author VinodAkkepalli
+ *
+ *	Program to demonstrate threads behavior
+ *	ThreadSample class is calling two thread objects named ThreadA & ThreadB
+ */
+
 public class ThreadSample {
 
 	/**
