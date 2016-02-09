@@ -23,7 +23,7 @@ public class Fibonacci {
 	
 	public static void main(String[] args) {
 		
-		int n = 20;
+		int n = 50;
 		Fibonacci ob = new Fibonacci();
 		ob.fibArr = new long[n];
 		

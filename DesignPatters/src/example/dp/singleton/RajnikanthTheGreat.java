@@ -24,7 +24,7 @@ public class RajnikanthTheGreat{
 	public static RajnikanthTheGreat getInstance(String name){
 		
 		//Double Checked Locking for Singleton Creation to ensure thread safety
-		//Observe that null checking if performed twice here
+		//Observe that null checking is performed twice here
 		if(oneRajniOb == null){
 		
 			synchronized(RajnikanthTheGreat.class){

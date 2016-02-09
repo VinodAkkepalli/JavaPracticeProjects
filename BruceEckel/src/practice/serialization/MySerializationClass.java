@@ -2,6 +2,7 @@ package practice.serialization;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class MySerializationClass implements Serializable {
 	
 	private String mName;

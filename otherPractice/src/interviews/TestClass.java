@@ -1,5 +1,9 @@
 package interviews;
 
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /* IMPORTANT: class must not be public. */
 
 /*
@@ -9,22 +13,33 @@ import java.io.InputStreamReader;
 */
 
 class TestClass {
-    @SuppressWarnings("null")
+    
 	public static void main(String args[] ) throws Exception {
-        
-    	StringBuilder sb = new StringBuilder("abcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijk");
+    
+    	String input = new String("scrum of scrums");
     	
-    	StringBuilder resultString = new StringBuilder();
-    	int n = 10;
-    	int len = sb.length();
-    	while(n < len){
-    		resultString.append(sb.charAt(n));
-    		System.out.println(sb.charAt(n));
-    		n+=10;
+    	int len = input.length();
+    	Map<Character, Integer> lhm = new LinkedHashMap<Character, Integer>();
+    	
+    	for(int i = 0; i < len ; i++){
+    		lhm.put(input.charAt(i), (lhm.get(input.charAt(i)) == null) ? 1 : (lhm.get(input.charAt(i))+1));
+    	}
+
+    	System.out.println(lhm.toString());
+    	
+    	for(Iterator<Character> it = lhm.keySet().iterator(); it.hasNext(); ){
+
+    		if(lhm.get(it) == 1){
+    			System.out.println(lhm.get(it));
+    		}
     	}
     	
-    	System.out.println(resultString);
-        System.out.println("Hello World!");
+    	for(Map.Entry<Character, Integer> entry : lhm.entrySet()){
+    		if(entry.getValue() == 1){
+    			System.out.println(entry.getKey());
+    			break;
+    		}
+    	}
     }
     
     public static Integer[] CountMethod(String str){
