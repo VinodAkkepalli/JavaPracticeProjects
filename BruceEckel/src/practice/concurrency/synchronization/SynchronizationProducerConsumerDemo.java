@@ -1,11 +1,14 @@
-package practice.concurrency;
+package practice.concurrency.synchronization;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * 
- * Problem Statement: Multi-Threading code demo using producer consumer problem
+ * Problem Statement: Multi-Threading demo using producer consumer problem
+ * Demonstration by managing queue programmatically, instead of using something
+ * like BlockingQueue
+ * 
  * 
  * @author Vinod Akkepalli
  *

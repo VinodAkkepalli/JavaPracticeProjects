@@ -1,46 +1,47 @@
-package practice.concurrency;
+package practice.concurrency.synchronization;
 
 import java.util.Queue;
-import java.util.Random;
 
-public class SynchronizationProducer implements Runnable {
+/**
+ * 
+ * <b>Description</b> : This consumer class consumes integers that are available
+ * in the queue of size maxSize
+ * 
+ * @author Vinod Akkepalli
+ *
+ */
+
+public class SynchronizationConsumer implements Runnable {
 
 	private Queue<Integer> pool;
 	private String name;
-	private final int maxSize;
 
-	public SynchronizationProducer(Queue<Integer> poolQueue, int maxSize,
-			String name) {
-
+	public SynchronizationConsumer(Queue<Integer> poolQueue, String name) {
 		this.pool = poolQueue;
 		this.name = name;
-		this.maxSize = maxSize;
 	}
 
 	@Override
 	public void run() {
-
-		Random random;
 		int i;
-
 		while (true) {
 			synchronized (pool) {
 
-				while (pool.size() == maxSize) {
+				while (pool.isEmpty()) {
+
+					System.out.println(
+							"Queue is empty, CONSUMER is waiting for PRODUCER action!!");
 					try {
-						System.out.println(
-								"Queue is full, PRODUCER is waiting for CONSUMER action!!");
 						pool.wait();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 						Thread.currentThread().interrupt();
 					}
+
 				}
 
-				random = new Random();
-				i = random.nextInt();
-				System.out.println(name + " produced item: " + i);
-				pool.add(i);
+				i = pool.poll();
+				System.out.println(name + " is consuming: " + i);
 
 				try {
 					wait(1000);
@@ -52,8 +53,8 @@ public class SynchronizationProducer implements Runnable {
 				pool.notifyAll();
 
 			}
-		}
 
+		}
 	}
 
 }
