@@ -11,7 +11,7 @@ import java.util.Set;
  *	Problem statement:
  *	Remove duplicate elements in a given array of int
  *	
- *	Note: Observe the JDK 8 streams used to convert an Set<Integer> to int[]
+ *	Note: Observe the JDK 8 streams used to convert an Set<Integer> to int[] 
  *
  */
 
