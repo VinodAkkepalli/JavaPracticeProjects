@@ -21,7 +21,7 @@ public class PairWithGivenSum {
 
 	public static void main(String[] args) {
 		
-		int[] arr = {1, 4, 45, 6, 10, -8};
+		int[] arr = {1, 4, 45, 6, 10, -8, 11};
 		int sum = 16;
 		
 		//uses 1) sorting 2) search ; time complexity is O(n logn)
