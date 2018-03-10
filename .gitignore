@@ -3,3 +3,4 @@
 *.recommenders/*
 */target
 */bin
+/.metadata/
