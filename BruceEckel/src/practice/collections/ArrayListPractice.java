@@ -6,8 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-//TODO practice addition, remove, define iterator next, hasNext, previous, hasPrevious
-//
+/**
+ * 
+ * @author Vinod Akkepalli
+ *
+ *	practice addition, remove, define iterator next, hasNext, previous, hasPrevious
+ */
 
 public class ArrayListPractice {
 	

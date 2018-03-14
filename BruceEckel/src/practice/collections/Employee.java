@@ -1,12 +1,12 @@
 package practice.collections;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Employee implements Comparable<Employee>{
 	
 	private EmployeeName eName;
 	private Integer eNumber; 
-	private Date hireDate;
+	private Calendar hireDate;
 	
 	public EmployeeName geteName() {
 		return eName;
@@ -16,11 +16,11 @@ public class Employee implements Comparable<Employee>{
 		return eNumber;
 	}
 
-	public Date getHireDate() {
+	public Calendar getHireDate() {
 		return hireDate;
 	}
 
-	public Employee(EmployeeName name, int number, Date hireDate) {
+	public Employee(EmployeeName name, int number, Calendar hireDate) {
 
 		this.eName = new EmployeeName(name.getFirstName(), name.getLastName());
 		this.eNumber = number;
@@ -35,8 +35,8 @@ public class Employee implements Comparable<Employee>{
 	
 	@Override
 	public String toString() {
-		@SuppressWarnings("deprecation")
-		String date = getHireDate().getDate() + "/" + getHireDate().getMonth() + "/" + (1900+getHireDate().getYear());
+		String date = getHireDate().get(Calendar.DAY_OF_MONTH) + "/" 
+		+ getHireDate().get(Calendar.MONTH) + "/" + (1900+getHireDate().get(Calendar.YEAR));
 		return eName.toString() + "; " + geteNumber() + "; " + date;
 	}
 }

@@ -3,7 +3,7 @@ package practice.collections;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -64,13 +64,12 @@ public class EmployeeCollectionsSort {
 		 * This part is to manipulate lists containing all details Employees
 		 */
 		
-		@SuppressWarnings("deprecation")
 		Employee empDetails[] = {
-				new Employee(new EmployeeName("John", "Smith"), 1000, new Date(96, 10, 25)),
-				new Employee(new EmployeeName("Karl", "Ng"), 1001, new Date(100, 2, 20)),
-				new Employee(new EmployeeName("Jeff", "Smith"), 1005, new Date(100, 11, 30)),
-				new Employee(new EmployeeName("Tom", "Rich"), 1004, new Date(92, 8, 10)),
-				new Employee(new EmployeeName("Vinod", "Akkepalli"), 1002, new Date(115, 2, 15)),
+				new Employee(new EmployeeName("John", "Smith"), 1000, new GregorianCalendar(96, 10, 25)/*new Date(96, 10, 25)*/),
+				new Employee(new EmployeeName("Karl", "Ng"), 1001, new GregorianCalendar(96, 10, 25)),
+				new Employee(new EmployeeName("Jeff", "Smith"), 1005, new GregorianCalendar(100, 11, 30)),
+				new Employee(new EmployeeName("Tom", "Rich"), 1004, new GregorianCalendar(92, 8, 10)),
+				new Employee(new EmployeeName("Vinod", "Akkepalli"), 1002, new GregorianCalendar(115, 2, 15)),
 		};
 		
 		System.out.println("Employee details in order of storage");
