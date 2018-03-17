@@ -3,7 +3,7 @@ package practice.collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
-// TODO create, add, delete and other basic operations
+//create, add, delete and other basic operations
 
 public class HashSetPractice {
 
@@ -26,8 +26,10 @@ public class HashSetPractice {
 		Iterator<Integer> it = hs.iterator();
 		
 		while(it.hasNext()){
-			System.out.println(it.next());
+			System.out.print(it.next() + " ");
 		}
+		
+		System.out.println();
 		
 		if(hs.contains(100)){
 			System.out.println("this hashset contains element 100!");

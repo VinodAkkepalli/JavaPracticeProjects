@@ -1,5 +1,7 @@
 package practice.collections;
 
+import java.util.Collections;
+
 /**
  * Program to demonstrate the functioning details of HashMap()
  * This example clearly explains the function callbacks invoke in times of collision
@@ -84,6 +86,11 @@ public class HashMapAnatomy {
 		System.out.println(vMap.get(ferrari));
 		System.out.println(vMap.get(hummer));
 		System.out.println(vMap.get(porche));
+		
+		
+		System.out.println("Hashmap entries sorted by value are:");
+		Map<Vehicle, String> vMap1 = MapUtils.sortByValue(vMap);
+		System.out.println(vMap1.toString());
 	}
 
 }

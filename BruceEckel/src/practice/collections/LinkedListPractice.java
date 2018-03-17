@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-	//TODO practice addition, remove, define iterator next, hasNext, previous, hasPrevious
+	//practice addition, remove, define iterator next, hasNext, previous, hasPrevious
 
 public class LinkedListPractice {
 
@@ -23,15 +23,14 @@ public class LinkedListPractice {
 		
 		System.out.println("After inserting at second position : ");
 		ll1.add(1,11);
-		//Print using LinkedList Iterator
 		
+		//Print using LinkedList Iterator
 		for(Iterator<Integer> it = ll1.iterator(); it.hasNext();){
 			System.out.println(it.next());
 		}
 		
 		System.out.println("printing the list in reverse order : ");
 		//Print using LinkedList Iterator
-		
 		for(ListIterator<Integer> it = ll1.listIterator(ll1.size()); it.hasPrevious();){
 			System.out.println(it.previous());
 		}
@@ -51,7 +50,9 @@ public class LinkedListPractice {
 		System.out.println(ll2);
 		
 		System.out.println("The position of element 2 in second list is");
-		System.out.println(Collections.binarySearch(ll2, 2));;
+		System.out.println(Collections.binarySearch(ll2, 2));
+		//TODO the above binarySearch does not provide (log n) time search. Why?? Read binarySearch documentation
+		//For what kind of collections does it provide log n time search? compare ArrayList & LinkedList
 	}
 
 }

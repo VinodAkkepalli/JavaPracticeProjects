@@ -2,7 +2,7 @@ package practice.collections;
 
 import java.util.*;
 
-// TODO Auto-generated method stub
+// HashSet, TreeSet & LinkedHashSet differences and set operations practice
 
 public class SetCollectionPractice {
 
@@ -36,13 +36,13 @@ public class SetCollectionPractice {
 		System.out.println("sorted order of hs is : " + ts1);
 		
 		hs.retainAll(ts);
-		System.out.println("intersection of two sets hs & ts is : " + hs);
+		System.out.println("INTERSECTION of two sets hs & ts is : " + hs);
 		
 		System.out.println("hs is : " + hs);
 		System.out.println("ts is : " + ts);
 		
 		ts.removeAll(hs);
-		System.out.println("set difference ts-hs is " + ts.toString());
+		System.out.println("SET DIFFERENCE ts-hs is " + ts.toString());
 		
 	}
 
