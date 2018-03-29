@@ -42,11 +42,12 @@ class Friend {
 	}
 
 	public synchronized void sayHi(Friend bower) {
-		System.out.format("%s: " + "Hi, How are you %s?%n", this.name, bower.getName());
+		System.out.format("%s: " + "Hi, How are you %s?\n", this.getName(), bower.getName());
 		bower.hiBack(this);
+		System.out.println(this.getName() + ": says we are good fiends!!");
 	}
 
 	public synchronized void hiBack(Friend bower) {
-		System.out.format("%s: " + "Hi, I am good %s!!%n", this.name, bower.getName());
+		System.out.format("%s: " + "Hi, I am good %s!!\n", this.getName(), bower.getName());
 	}
 }

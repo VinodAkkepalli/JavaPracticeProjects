@@ -52,13 +52,13 @@ public class SynchronizationProducer implements Runnable {
 				try {
 					this.binary.acquire();
 					System.out.println(this.name
-							+ " has entered Mutual-Exclusion block acquiring. semaphore");
+							+ " has entered Mutual-Exclusion block acquiring semaphore");
 
 					random = new Random();
 					i = random.nextInt();
 					System.out.println(this.name + " produced item: " + i);
 					pool.add(i);
-
+					System.out.println("Pool content is: " + pool.toString());
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
