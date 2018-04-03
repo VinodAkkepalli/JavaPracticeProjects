@@ -5,8 +5,9 @@ import java.util.concurrent.Callable;
 /**
  * 
  * <b>Description</b> : A Callable which calculates factorial of a number and
- * returns the value after calculation The intention is to demo callable which
- * is capable of returning a value
+ * returns the value after calculation. The intention is to demo Callable which
+ * is capable of returning a value.
+ * This Callable also delays posting the result for 2 Seconds
  * 
  * @author Vinod Akkepalli
  *

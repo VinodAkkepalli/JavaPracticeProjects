@@ -28,18 +28,25 @@ public class FutureDemo {
 		DelayedResponseTask task = new DelayedResponseTask(10);
 		System.out.println("Submitting Task ...");
 
+		/**
+		 * ExecutorService.submit(Callable) takes a Callable as input task
+		 * ExecutorService.execute(Runnable) takes a Runnable as input task
+		 */
 		Future<Integer> future = threadPool.submit(task);
 		System.out.println("Task is submitted");
-
+		
 		while (!future.isDone()) {
 			System.out.println("Task is not completed yet....");
 			Thread.sleep(1); // sleep for 1 millisecond before checking again
 		}
 
 		System.out.println("Task is completed, let's check result");
+		//get() method collects the return value from Callable
 		int factorial = future.get();
 
 		System.out.println("Factorial of 10 is : " + factorial);
+		
+		//We need to shutdown an ExecutorService after use   
 		threadPool.shutdown();
 
 	}
