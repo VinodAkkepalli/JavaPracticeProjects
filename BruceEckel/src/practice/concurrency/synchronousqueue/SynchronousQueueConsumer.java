@@ -5,8 +5,8 @@ import java.util.concurrent.SynchronousQueue;
 
 /**
  * 
- * <b>Description</b> : This class is a producer in this producer consumer code.
- * This has a SynchronousQueue to help both producer and consumer communicate.
+ * <b>Description</b> : This class is a consumer in this producer consumer code.
+ * This has a SynchronousQueue to help communicate with producer.
  * 
  * @author Vinod Akkepalli
  *
