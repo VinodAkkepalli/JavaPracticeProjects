@@ -24,15 +24,15 @@ public class ReverseWordsInString {
 	public static String reverseWords1(String str){
 		String ans = "";
 		int strLen = str.length();
-		String temp = new String();
+		StringBuilder temp;
 		
 		for(int i=0;i<strLen;i++){
-			temp = "";
+			temp = new StringBuilder(0);
 			while((i<strLen) && (str.charAt(i) != ' ') && (str.charAt(i) != '.')){
-				temp = temp + str.charAt(i);
+				temp = temp.append(str.charAt(i));
 				i++;
 			}
-			temp = myReverse(temp);
+			temp = myReverse(temp.toString());
 			ans = ans + temp + str.charAt(i);
 		}
 		return ans;
@@ -41,22 +41,22 @@ public class ReverseWordsInString {
 	//This method does not automatically take care of any punctuation like full stop
 	// output : Eht kciuq nworb xof spmuj revo eht yzal god deman Eilrahc
 	public static String reverseWords(String input){
-		String ans = "";
+		StringBuilder ans = new StringBuilder(0);
 		String[] strArr = input.split("[ .]+");
 	
 		for(int i = 0; i < strArr.length; i++){
-			strArr[i] = myReverse(strArr[i]);
-			ans = ans + strArr[i] + " ";
+			 
+			ans = ans.append(myReverse(strArr[i]) + " ");
 		}
-		return ans;
+		return ans.toString();
 	}
 	
 	
 	//This method returns a reverse of a string passed and
 	//if first char is capital letter, it makes sure that first character is capital even after reversing
-	public static String myReverse(String str){
+	public static StringBuilder myReverse(String str){
 		
-		String ans = "";
+		StringBuilder ans = new StringBuilder(0);
 		boolean flag = false;
 		int wordLen = str.length();
 		
@@ -65,11 +65,11 @@ public class ReverseWordsInString {
 		
 		for(int j = wordLen-1; j >=0 ; j--){
 			if(flag && j == (wordLen-1)){
-				ans = ans + (char)(str.charAt(j) - 32);
+				ans = ans.append((char)(str.charAt(j) - 32));
 			}else if(flag && j == 0){
-				ans = ans + (char)(str.charAt(j) + 32);
+				ans = ans.append((char)(str.charAt(j) + 32));
 			}else{
-				ans = ans + str.charAt(j);
+				ans = ans.append(str.charAt(j));
 			}
 		}
 		return ans;

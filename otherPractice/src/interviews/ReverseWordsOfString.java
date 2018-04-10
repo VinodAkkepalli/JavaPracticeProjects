@@ -14,20 +14,20 @@ package interviews;
 public class ReverseWordsOfString {
 
 	public static String ReverseWords(String str){
-		String ans = "";
+		StringBuilder ans = new StringBuilder();
 		int strLen = str.length();
-		String temp = new String();
+		StringBuilder temp;
 		
 		for(int i=0;i<strLen;i++){
-			temp = "";
+			temp = new StringBuilder();
 			while((i<strLen) && (str.charAt(i) != ' ')){
-				temp = temp + str.charAt(i);
+				temp = temp.append(str.charAt(i));
 				i++;
 			}
-			ans = temp + " " + ans;
+			ans = temp.append(" " + ans);
 		}
 		
-		return ans;
+		return ans.toString();
 	}
 	
 	

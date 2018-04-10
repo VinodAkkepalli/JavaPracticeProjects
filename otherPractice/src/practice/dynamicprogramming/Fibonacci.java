@@ -13,7 +13,7 @@ import java.util.Arrays;
  *	Demonstrates Memorization technique
  *
  *	Method: int fibRec(int) uses simple recursion
- *	This method takes long time print answer on console
+ *	This method takes long time to print answer on console
  */
 
 public class Fibonacci {
@@ -23,7 +23,7 @@ public class Fibonacci {
 	
 	public static void main(String[] args) {
 		
-		int n = 50;
+		int n = 45;
 		Fibonacci ob = new Fibonacci();
 		ob.fibArr = new long[n];
 		
@@ -70,11 +70,11 @@ public class Fibonacci {
 	// Uses recursion technique
 	private int fibRec(int n){
 		if(n==0){
-			return 0;
+			return 0;	//Base case
 		}else if(n==1){
-			return 1;
+			return 1;	//Base case
 		}else{
-			return fibRec(n-1) + fibRec(n-2);
+			return fibRec(n-1) + fibRec(n-2);	//Recursion
 		}
 	}
 	
