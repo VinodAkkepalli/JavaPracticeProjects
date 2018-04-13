@@ -30,7 +30,7 @@ public class PascalTriangle {
 		printPascalDP(7);
 		
 		// O(n^2). uses dynamic programming to avoid recalculations
-		// O(1). uses a 2D array to store calculated values 
+		// O(1). uses a single variable to store previous value in the current row 
 		printPascalDPOpt(8);
 	}
 
