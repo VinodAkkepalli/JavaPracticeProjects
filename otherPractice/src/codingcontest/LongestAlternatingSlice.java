@@ -14,11 +14,10 @@ public class LongestAlternatingSlice {
 
 	public static void main(String[] args) {
 		
-		int[] N = {5, 4, -3, 2, 0, 1, -1, 0, -2, -3, 4, -5};
+		int[] N = {5, 4, -3, 2, 0, 1, -1, -1, -2, 2, -3, 4, -5};
 		
-		System.out.println(solution(N)); 
+		System.out.println(solution(N));
 	}
-
 	
 	public static int solution(int[] A) {
 
@@ -35,7 +34,7 @@ public class LongestAlternatingSlice {
 					end++;
 				}else if((A[end] == 0) && (A[end-1] * A[end+1] >= 0)){
 					end++;
-				}else if((A[end+1] == 0) && (A[end-1] * A[end+1] >= 0)){
+				}else if(A[end+1] == 0){
 					end++;
 				}else if((end+1 == arrLen-1) && (A[end] * A[end+1] == 0)){
 					end++;
