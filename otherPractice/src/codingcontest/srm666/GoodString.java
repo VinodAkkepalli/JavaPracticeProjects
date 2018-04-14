@@ -106,6 +106,30 @@ public class GoodString
 		return "Good";
 	}
 	
+	// Another elegant solution with O(n) time complexity
+	public String isGood1(String str) {
+		
+		int count = 0;
+		
+		for(int i=0; i<str.length(); i++) {
+			if(str.charAt(i) == 'a') {
+				count++;
+			} else {
+				count--;
+			}
+			
+			if(count < 0) {
+				break;
+			}				
+		}
+		
+		if(count ==0) {
+			return "Good";
+		}
+		return "Bad";
+	}
+	
+	
 	public static void main(String[] args)
 	{
 		long time;
