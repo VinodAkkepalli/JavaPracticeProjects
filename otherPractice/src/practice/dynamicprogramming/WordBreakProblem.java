@@ -1,4 +1,4 @@
-package codingcontest;
+package practice.dynamicprogramming;
 
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package practice.general.arrays;
+package practice.dynamicprogramming;
 
 /**
  * 
