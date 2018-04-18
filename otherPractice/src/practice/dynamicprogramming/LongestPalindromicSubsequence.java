@@ -1,5 +1,12 @@
 package practice.dynamicprogramming;
 
+/**
+ * 
+ * @author Vinod Akkepalli
+ *
+ *	problem statement: Given a sequence, find the length of the longest palindromic subsequence in it
+ *	https://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/	
+ */
 public class LongestPalindromicSubsequence {
 
 	public static void main(String[] args) {
