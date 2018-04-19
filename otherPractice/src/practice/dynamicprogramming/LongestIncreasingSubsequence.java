@@ -8,6 +8,9 @@ import java.util.Arrays;
  *	Problem Description: Given an array of random numbers. Find longest increasing subsequence in the array
  *	https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
  *	https://www.geeksforgeeks.org/?p=12832
+ *
+ *	Try to implement below algorithm which gives O(n log n) time complexity
+ *	https://stackoverflow.com/questions/2631726/how-to-determine-the-longest-increasing-subsequence-using-dynamic-programming
  */
 
 
@@ -37,6 +40,4 @@ public class LongestIncreasingSubsequence {
 		System.out.println("longestSubSequence: " + Arrays.toString(longestSubSequence));
 		return longestSubSequence[n-1];
 	}
-
-	
 }
