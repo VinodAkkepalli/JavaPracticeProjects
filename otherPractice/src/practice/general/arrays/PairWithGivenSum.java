@@ -1,8 +1,7 @@
 package practice.general.arrays;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 
 /**
  * 
@@ -38,17 +37,16 @@ public class PairWithGivenSum {
 		
 		int diff;
 		int length = array.length-1;
-		Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+		HashSet<Integer> hs = new HashSet<>();
 		int i;
 		
 		for(i = 0; i < length; i++){
 			diff = sum - array[i];
-			if(hm.get(array[i]) == null){
-				hm.put(diff, 1);
-			}else{
+			if(diff > 0 && hs.contains(diff)){
 				System.out.println(array[i] + " & " + diff);
-				break;
+				break;	
 			}
+			hs.add(array[i]);
 		}
 		
 		if(i >= length){
