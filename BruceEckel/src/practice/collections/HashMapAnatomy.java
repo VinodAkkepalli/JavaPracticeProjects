@@ -1,15 +1,13 @@
 package practice.collections;
 
-import java.util.Collections;
-
-/**
- * Program to demonstrate the functioning details of HashMap()
- * This example clearly explains the function callbacks invoke in times of collision
- */
-
-
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * @author Vinod Akkepalli
+ * Program to demonstrate the functioning details of HashMap()
+ * This example clearly explains the function call-backs invoked in collisions
+ */
 
 class Vehicle{
 	private String name;
@@ -74,10 +72,16 @@ public class HashMapAnatomy {
 		vMap.put(ferrari, "One");
 		vMap.put(porche, "Two");
 		vMap.put(mercedez, "Three");
+		// Collision here as hashCode is 1 which is same as that of ferrari
 		vMap.put(hummer, "Four");
-		vMap.put(audi, "Five");
+		// Collision here as hashCode is 1 which is same as that of ferrari & hummer
+		vMap.put(audi, "Five");	
+		// Same key ferrari inserted second time in HashMap => value is updated/overwritten
+		// Methods invoked hashCode(returns 2), hash(of key porche)
+		// hash matches with existing porche in vMap; hence value is overwritten
 		vMap.put(porche,"Four");
-		vMap.put(hummer,"One");
+		// Same key hummer inserted second time in HashMap => value is updated/overwritten
+		vMap.put(hummer,"One");	
 		
 		System.out.println("Hashmap entries are :");
 		System.out.println(vMap.toString());
@@ -92,5 +96,4 @@ public class HashMapAnatomy {
 		Map<Vehicle, String> vMap1 = MapUtils.sortByValue(vMap);
 		System.out.println(vMap1.toString());
 	}
-
 }
