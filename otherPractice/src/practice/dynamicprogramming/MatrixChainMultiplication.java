@@ -13,6 +13,9 @@ import java.util.Arrays;
  *         which order to perform the multiplications.
  *
  *         https://www.geeksforgeeks.org/?p=15553
+ *         
+ *         Program also prints the optimum multiplication sequence in brackets
+ *         https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/
  *
  */
 
