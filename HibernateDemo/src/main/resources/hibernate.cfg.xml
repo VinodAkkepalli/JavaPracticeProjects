@@ -12,6 +12,6 @@
         <property name="connection.url">jdbc:sqlite:sqlitedb.db</property>
         <property name="connection.username"></property>
         <property name="connection.password"></property>         
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>
