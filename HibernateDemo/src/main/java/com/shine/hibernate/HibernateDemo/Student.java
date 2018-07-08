@@ -1,8 +1,8 @@
 package com.shine.hibernate.HibernateDemo;
 
-import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Student {
@@ -12,6 +12,8 @@ public class Student {
 	private int rollNumber;
 	@Column(name="student_name")
 	private String name;
+//	@Transient
+//	private String petName;
 
 	public String getName() {
 		return name;
