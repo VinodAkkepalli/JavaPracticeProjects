@@ -29,14 +29,18 @@ public class App
     
     static void fetchData(Session session) {
     	Transaction transaction = session.beginTransaction();
-        Student std = (Student)session.get(Student.class, 2);
+        Student std = (Student)session.get(Student.class, 10);
         System.out.println("Student record is: " + std);
         transaction.commit();    	
     }
     
     static void insertData(Session session) {
+    	StudentName sName = new StudentName();
+    	sName.setFirstName("Vinod");
+    	sName.setLastName("Akkepalli");
+    	sName.setMiddleName("Kumar");
     	Student std1 = new Student();
-        std1.setName("Rajesh");
+        std1.setName(sName);
         std1.setRollNumber(10);
         
         Transaction transaction = session.beginTransaction();
@@ -46,9 +50,14 @@ public class App
     }
     
     static void updateData(Session session) {
+    	StudentName sName = new StudentName();
+    	sName.setFirstName("Pramod");
+    	sName.setLastName("Akkepalli");
+    	sName.setMiddleName("Kumar");
+    	
     	Student std1 = new Student();
-        std1.setName("Vijay");
-        std1.setRollNumber(6);
+        std1.setName(sName);
+        std1.setRollNumber(10);
         
         Transaction transaction = session.beginTransaction();
         // update for updating a record
@@ -57,8 +66,13 @@ public class App
     }
     
     static void saveOrUpdateData(Session session) {
+    	StudentName sName = new StudentName();
+    	sName.setFirstName("Bapu");
+    	sName.setLastName("Akkepalli");
+    	sName.setMiddleName("");
+    	
     	Student std1 = new Student();
-        std1.setName("Raghu");
+        std1.setName(sName);
         std1.setRollNumber(1);
         
         Transaction transaction = session.beginTransaction();

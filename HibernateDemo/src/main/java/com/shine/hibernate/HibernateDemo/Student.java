@@ -11,20 +11,20 @@ public class Student {
 	@Column(name="roll_number")
 	private int rollNumber;
 	@Column(name="student_name")
-	private String name;
+	private StudentName name;
 //	@Transient
 //	private String petName;
 
-	public String getName() {
+	public int getRollNumber() {
+		return rollNumber;
+	}
+
+	public StudentName getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(StudentName name) {
 		this.name = name;
-	}
-
-	public int getRollNumber() {
-		return rollNumber;
 	}
 
 	public void setRollNumber(int rollNumber) {
@@ -34,7 +34,5 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [rollNumber=" + rollNumber + ", name=" + name + "]";
-	}
-	
-	
+	}	
 }
