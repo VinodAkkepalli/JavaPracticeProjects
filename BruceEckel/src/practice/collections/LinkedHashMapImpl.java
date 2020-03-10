@@ -13,9 +13,16 @@ import java.util.Map.Entry;
 
 public class LinkedHashMapImpl {
 
+	private static final int MAX_SIZE = 5;
+
 	public static void main(String[] args) {
 		LinkedHashMap<String, String> lhm = new LinkedHashMap<String, String>(
-				16, 0.75f, true);
+				16, 0.75f, true) {
+			@Override
+			protected boolean removeEldestEntry(Entry eldest) {
+				return size() > MAX_SIZE;
+			}
+		};
 		lhm.put("one", null);
 		lhm.put("two", null);
 		lhm.put("three", null);
@@ -48,6 +55,24 @@ public class LinkedHashMapImpl {
 			System.out.println(itr.next());
 		}
 
+		lhm.put("four", "4");
+		lhm.put("five", "5");
+
+		System.out.println("LinkedHashMap accessed with iterator: ");
+		itr = lhm.entrySet().iterator();
+		while (itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+
+		lhm.put("six", "6");
+
+		System.out.println("LinkedHashMap accessed with iterator: ");
+		itr = lhm.entrySet().iterator();
+		while (itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+
+		System.out.println("Eldest Entry(LRU entry) has been removed!!");
 	}
 
 }
