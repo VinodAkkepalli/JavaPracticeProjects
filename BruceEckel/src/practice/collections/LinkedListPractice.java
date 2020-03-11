@@ -1,10 +1,6 @@
 package practice.collections;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 	//practice addition, remove, define iterator next, hasNext, previous, hasPrevious
 
@@ -12,7 +8,7 @@ public class LinkedListPractice {
 
 	public static void main(String[] args) {
 
-		List<Integer> ll1 = new LinkedList<Integer>();
+		List<Integer> ll1 = new LinkedList<>();
 		
 		ll1.add(1);
 		ll1.add(2);
@@ -25,7 +21,7 @@ public class LinkedListPractice {
 		ll1.add(1,11);
 		
 		//Print using LinkedList Iterator
-		for(Iterator<Integer> it = ll1.iterator(); it.hasNext();){
+        for(Iterator<Integer> it = ll1.iterator(); it.hasNext();){
 			System.out.println(it.next());
 		}
 		
@@ -39,7 +35,7 @@ public class LinkedListPractice {
 		Collections.sort(ll1);
 		System.out.println(ll1.toString());
 		
-		List<Integer> ll2 = new LinkedList<Integer>(ll1);
+		List<Integer> ll2 = new LinkedList<>(ll1);
 		Collections.fill(ll2, 100);
 		System.out.println("new list filled with 100");
 		System.out.println(ll2);
@@ -53,6 +49,13 @@ public class LinkedListPractice {
 		System.out.println(Collections.binarySearch(ll2, 2));
 		//TODO the above binarySearch does not provide (log n) time search. Why?? Read binarySearch documentation
 		//For what kind of collections does it provide log n time search? compare ArrayList & LinkedList
+
+		ll2.add(3);
+		ll2.add(4);
+		ll2.add(5);
+		System.out.println(ll2 + " <- is the final List");
+		Collections.rotate(ll2.subList(1,4), 2);
+		System.out.println(ll2 + " <- List after rotation of the subList(1,4) by distance 2");
 	}
 
 }
