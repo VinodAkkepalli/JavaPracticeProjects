@@ -1,5 +1,7 @@
 package practice;
 
+import sun.util.resources.cldr.CalendarData;
+
 import java.util.Arrays;
 
 public class AccessClassDetails {
@@ -34,5 +36,12 @@ public class AccessClassDetails {
         Class aClass2 = acd.getClass();
         System.out.println("aClass == aClass2 : "  + (aClass == aClass2));
 
+        //String class loaded by Bootstrap Class loader
+        //Bootstrap class loader is not part of Java, hence null
+        System.out.println(String.class.getClassLoader());
+        //CalendarData is part of extension path, loaded by ExtClassLoader
+        System.out.println(CalendarData.class.getClassLoader());
+        //Any application class is loaded by AppClassLoader
+        System.out.println(AccessClassDetails.class.getClassLoader());
     }
 }
