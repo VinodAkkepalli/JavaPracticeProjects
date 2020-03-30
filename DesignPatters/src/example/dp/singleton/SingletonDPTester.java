@@ -27,9 +27,12 @@ public class SingletonDPTester implements Runnable{
 	public void run() {
 		
 		RajnikanthTheGreat rajniOb = RajnikanthTheGreat.getInstance(Thread.currentThread().getName());
-		System.out.println("I am " + Thread.currentThread().getName() + 
+		System.out.println("I am " + Thread.currentThread().getName() +
 				". The Rajnikanth I created through: " + rajniOb.nameIs);
-		
+
+		SimpleSingletonRajni ssr = SimpleSingletonRajni.getInstance();
+		System.out.println("I am " + Thread.currentThread().getName()+
+				". The simple singleton I created is: " + ssr);
 	}
 
 }
