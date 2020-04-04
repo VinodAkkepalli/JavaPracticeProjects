@@ -3,7 +3,7 @@ package practice.serialization;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class MySerializationClass implements Serializable {
+public class UserDetailsClass implements Serializable {
 	
 	private String mName;
 	private String mAddress;
@@ -11,11 +11,8 @@ public class MySerializationClass implements Serializable {
 	//this is declared transient, hence will not be serialized
 	//If we try to read this value from consumer code, 0 will be returned
 	private transient int mLength;
-		
-	public MySerializationClass() {
-	}
-	
-	public MySerializationClass(String name, String address) {
+
+	public UserDetailsClass(String name, String address) {
 
 		mName = name;
 		mAddress = address;
@@ -26,23 +23,12 @@ public class MySerializationClass implements Serializable {
 		return mName;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
-	}
-
 	public String getmAddress() {
 		return mAddress;
-	}
-
-	public void setmAddress(String mAddress) {
-		this.mAddress = mAddress;
 	}
 
 	public int getmLength() {
 		return mLength;
 	}
 
-	public void setmLength(int mLength) {
-		this.mLength = mLength;
-	}
 }
