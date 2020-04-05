@@ -9,22 +9,22 @@ public class HashSetPractice {
 
 	public static void main(String[] args) {
 		
-		HashSet<Integer> hs = new HashSet<Integer>();
-		
+		HashSet<Integer> hs = new HashSet<>();
+
 		hs.add(1);
 		hs.add(100);
 		hs.add(300);
 		
 		System.out.println(hs.toString());
 		
-		HashSet<Integer> subSet = new HashSet<Integer>();
+		HashSet<Integer> subSet = new HashSet<>();
 		subSet.add(3);
 		subSet.add(6);
 		
 		hs.addAll(subSet);
-		
+
 		Iterator<Integer> it = hs.iterator();
-		
+
 		while(it.hasNext()){
 			System.out.print(it.next() + " ");
 		}

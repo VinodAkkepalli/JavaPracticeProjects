@@ -20,7 +20,6 @@ public class CallableDemo {
 
 		// task.call() will start execution of a task; similar to task.start()
 		System.out.println(task.call());
-
 	}
 
 }

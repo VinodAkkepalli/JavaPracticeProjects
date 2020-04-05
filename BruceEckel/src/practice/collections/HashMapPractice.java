@@ -7,7 +7,7 @@ public class HashMapPractice {
 
 	public static void main(String[] args) {
 
-		HashMap<String, Character> hm = new HashMap<String, Character>();
+		HashMap<String, Character> hm = new HashMap<>();
 		hm.put("Vinod", 'V');
 		hm.put("Bapu", 'B');
 		hm.put("Rajni", 'R');

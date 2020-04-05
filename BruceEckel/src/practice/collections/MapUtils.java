@@ -1,6 +1,9 @@
 package practice.collections;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MapUtils {
 
@@ -8,16 +11,10 @@ public class MapUtils {
 	sortByValue( Map<K, V> map )
 	{
 		List<Map.Entry<K, V>> list =
-				new ArrayList<Map.Entry<K, V>>( map.entrySet() );
-		Collections.sort( list, new Comparator<Map.Entry<K, V>>()
-				{
-					public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 )
-					{
-						return (o1.getValue()).compareTo( o2.getValue() );
-					}
-				} );
+				new ArrayList<>(map.entrySet());
+		list.sort(Map.Entry.comparingByValue());
 
-		Map<K, V> result = new HashMap<K, V>();
+		Map<K, V> result = new HashMap<>();
 		for (Map.Entry<K, V> entry : list)
 		{
 			result.put( entry.getKey(), entry.getValue() );

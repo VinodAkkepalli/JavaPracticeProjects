@@ -23,7 +23,6 @@ public class ProducerConsumerImpl {
 	private BlockingQueue<Integer> pool;
 
 	int i;
-	Boolean isAdded = false;
 	Integer poolElement;
 
 	public ProducerConsumerImpl(int poolSize) {
@@ -53,10 +52,7 @@ public class ProducerConsumerImpl {
 		}
 
 		poolElement = pool.take();
-
-		if (poolElement != null) {
-			currentSize--;
-			System.out.println("CONSUMER consumed item: " + poolElement);
-		}
+		currentSize--;
+		System.out.println("CONSUMER consumed item: " + poolElement);
 	}
 }

@@ -1,6 +1,9 @@
 package practice.collections;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 // HashSet, TreeSet & LinkedHashSet differences and set operations practice
 
@@ -8,9 +11,9 @@ public class SetCollectionPractice {
 
 	public static void main(String[] args) {
 
-		Set<Integer> hs = new HashSet<Integer>();
-		Set<Integer> ts = new TreeSet<Integer>();
-		Set<Integer> lhs = new LinkedHashSet<Integer>();
+		Set<Integer> hs = new HashSet<>();
+		Set<Integer> ts = new TreeSet<>();
+		Set<Integer> lhs = new LinkedHashSet<>();
 		
 		hs.add(23);
 		hs.add(32);
@@ -32,15 +35,15 @@ public class SetCollectionPractice {
 		System.out.println("lhs : " + lhs);
 		
 		//To create a sorted set out of an unsorted set like HashSet
-		Set<Integer> ts1 = new TreeSet<Integer>(hs);
+		Set<Integer> ts1 = new TreeSet<>(hs);
 		System.out.println("sorted order of hs is : " + ts1);
 		
 		hs.retainAll(ts);
 		System.out.println("INTERSECTION of two sets hs & ts is : " + hs);
-		
+		hs.add(67);
+
 		System.out.println("hs is : " + hs);
 		System.out.println("ts is : " + ts);
-		
 		ts.removeAll(hs);
 		System.out.println("SET DIFFERENCE ts-hs is " + ts.toString());
 		

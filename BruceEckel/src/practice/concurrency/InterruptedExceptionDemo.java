@@ -1,4 +1,4 @@
-package practice.concurrency.synchronization;
+package practice.concurrency;
 
 /**
  * <b>Description</b> :

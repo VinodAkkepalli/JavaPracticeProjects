@@ -17,9 +17,6 @@ public class CountDownLatchDemo {
 	private CountDownLatchDemo() {
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		// CountDownLatch to wait for 5 threads to call coutDown()

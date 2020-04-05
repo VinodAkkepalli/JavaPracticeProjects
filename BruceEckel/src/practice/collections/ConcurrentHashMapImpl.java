@@ -28,16 +28,16 @@ public class ConcurrentHashMapImpl {
 	public static void main(String[] args) throws InterruptedException {
 
 		// Test with Hashtable Object
-		hashTableOb = new Hashtable<String, Integer>();
+		hashTableOb = new Hashtable<>();
 		performTest(hashTableOb);
 
 		// Test with synchronizedMap Object
 		synchronizedMapOb = Collections
-				.synchronizedMap(new HashMap<String, Integer>());
+				.synchronizedMap(new HashMap<>());
 		performTest(synchronizedMapOb);
 
 		// Test with ConcurrentHashMap Object
-		concurrentHashMapOb = new ConcurrentHashMap<String, Integer>();
+		concurrentHashMapOb = new ConcurrentHashMap<>();
 		performTest(concurrentHashMapOb);
 
 	}
@@ -55,22 +55,18 @@ public class ConcurrentHashMapImpl {
 					.newFixedThreadPool(THREAD_POOL_SIZE);
 
 			for (int j = 0; j < THREAD_POOL_SIZE; j++) {
-				threadPool.execute(new Runnable() {
-					@SuppressWarnings("unused")
-					@Override
-					public void run() {
+				threadPool.execute(() -> {
 
-						for (int i = 0; i < 500000; i++) {
-							Integer randomNumber = (int) Math
-									.ceil(Math.random() * 550000);
+					for (int i1 = 0; i1 < 500000; i1++) {
+						Integer randomNumber = (int) Math
+								.ceil(Math.random() * 550000);
 
-							// Retrieve value. We are not using it anywhere
-							Integer value = map
-									.get(String.valueOf(randomNumber));
+						// Retrieve value. We are not using it anywhere
+						Integer value = map
+								.get(String.valueOf(randomNumber));
 
-							// Put value
-							map.put(String.valueOf(randomNumber), randomNumber);
-						}
+						// Put value
+						map.put(String.valueOf(randomNumber), randomNumber);
 					}
 				});
 			}

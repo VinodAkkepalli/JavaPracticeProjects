@@ -7,7 +7,7 @@ public class LinkedHashSetPractice {
 
 	public static void main(String[] args) {
 		
-		Set<Integer> lhs = new LinkedHashSet<Integer>();
+		Set<Integer> lhs = new LinkedHashSet<>();
 		lhs.add(9);
 		lhs.add(99);
 		lhs.add(1);

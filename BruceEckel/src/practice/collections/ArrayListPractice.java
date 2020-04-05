@@ -1,10 +1,6 @@
 package practice.collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * 
@@ -17,7 +13,7 @@ public class ArrayListPractice {
 	
 	public static void main(String[] args) {
 		
-		List<String> al1 = new ArrayList<String>();
+		List<String> al1 = new ArrayList<>();
 		
 		al1.add("Vinod");
 		al1.add("Akkepalli");

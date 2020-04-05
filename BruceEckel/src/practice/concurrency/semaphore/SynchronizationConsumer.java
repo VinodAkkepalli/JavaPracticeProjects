@@ -4,7 +4,7 @@ import java.util.Queue;
 
 public class SynchronizationConsumer implements Runnable {
 
-	private Queue<Integer> pool;
+	private final Queue<Integer> pool;
 	private String name;
 
 	public SynchronizationConsumer(Queue<Integer> poolQueue, String name) {

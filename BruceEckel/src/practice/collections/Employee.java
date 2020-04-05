@@ -7,10 +7,6 @@ public class Employee implements Comparable<Employee>{
 	private EmployeeName eName;
 	private Integer eNumber; 
 	private Calendar hireDate;
-	
-	public EmployeeName geteName() {
-		return eName;
-	}
 
 	public Integer geteNumber() {
 		return eNumber;

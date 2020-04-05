@@ -13,7 +13,7 @@ public class CallableFactorialCalcTask implements Callable<Integer> {
 
 	private final int number;
 
-	public CallableFactorialCalcTask(int number) {
+	CallableFactorialCalcTask(int number) {
 		this.number = number;
 	}
 

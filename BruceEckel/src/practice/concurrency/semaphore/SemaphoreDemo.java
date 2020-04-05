@@ -16,7 +16,7 @@ import java.util.concurrent.Semaphore;
 
 public class SemaphoreDemo {
 
-	public static final Semaphore binary = new Semaphore(1);
+	private static final Semaphore binary = new Semaphore(1);
 	protected static final Queue<Integer> pool = new LinkedList<>();
 
 	private SemaphoreDemo() {

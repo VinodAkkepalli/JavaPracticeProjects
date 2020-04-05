@@ -9,8 +9,5 @@ public class MyException extends Exception{
 		super(msg);
 		this.str = msg;
 	}
-	
-	void getStr(){
-		System.out.println("str is = " + str);
-	}
+
 }

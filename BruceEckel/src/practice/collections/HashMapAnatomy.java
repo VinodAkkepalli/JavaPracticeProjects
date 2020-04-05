@@ -60,7 +60,7 @@ public class HashMapAnatomy {
 
 	public static void main(String[] args) {
 
-		Map<Vehicle, String> vMap = new HashMap<Vehicle, String>();
+		Map<Vehicle, String> vMap = new HashMap<>();
 		
 		//creating vehicle objects
 		Vehicle ferrari = new Vehicle("Ferrari", 1);
@@ -76,7 +76,7 @@ public class HashMapAnatomy {
 		vMap.put(hummer, "Four");
 		// Collision here as hashCode is 1 which is same as that of ferrari & hummer
 		vMap.put(audi, "Five");	
-		// Same key ferrari inserted second time in HashMap => value is updated/overwritten
+		// Same key porche inserted second time in HashMap => value is updated/overwritten
 		// Methods invoked hashCode(returns 2), hash(of key porche)
 		// hash matches with existing porche in vMap; hence value is overwritten
 		vMap.put(porche,"Four");

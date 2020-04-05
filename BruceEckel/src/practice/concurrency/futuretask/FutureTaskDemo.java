@@ -1,17 +1,17 @@
 package practice.concurrency.futuretask;
 
+import practice.concurrency.future.DelayedResponseTask;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-import practice.concurrency.future.DelayedResponseTask;
-
 /**
  * 
  * <b>Description</b> : Demonstration of FutureTask which can be used to wrap a
- * Runnable or Callable Object. Since FutureTask implements Runnable it can be
- * submitted to an Executor This class provides a base implementation of Future,
+ * Runnable or Callable Object. FutureTask can be submitted to an Executor.
+ * This class provides a base implementation of Future,
  * with methods to start and cancel a computation, query to see if the
  * computation is complete, and retrieve the result of the computation
  * 
@@ -23,9 +23,6 @@ public class FutureTaskDemo {
 	public static final ExecutorService threadPool = Executors
 			.newFixedThreadPool(3);
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 			throws InterruptedException, ExecutionException {
 

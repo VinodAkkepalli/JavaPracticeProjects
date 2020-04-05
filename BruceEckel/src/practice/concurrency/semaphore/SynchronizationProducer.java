@@ -15,7 +15,7 @@ import java.util.concurrent.Semaphore;
 
 public class SynchronizationProducer implements Runnable {
 
-	private Queue<Integer> pool;
+	private final Queue<Integer> pool;
 	private final String name;
 	private final int maxSize;
 	private Semaphore binary;

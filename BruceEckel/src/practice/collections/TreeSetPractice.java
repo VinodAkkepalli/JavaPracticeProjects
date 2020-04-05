@@ -1,13 +1,13 @@
 package practice.collections;
 
-import java.util.TreeSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class TreeSetPractice {
 
 	public static void main(String[] args) {
 		
-		Set<Integer> ts = new TreeSet<Integer>();
+		Set<Integer> ts = new TreeSet<>();
 		ts.add(9);
 		ts.add(99);
 		ts.add(1);

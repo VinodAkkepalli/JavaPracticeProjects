@@ -19,19 +19,14 @@ public class FutureDemo {
 	public static final ExecutorService threadPool = Executors
 			.newFixedThreadPool(3);
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 			throws InterruptedException, ExecutionException {
 
 		DelayedResponseTask task = new DelayedResponseTask(10);
 		System.out.println("Submitting Task ...");
 
-		/**
-		 * ExecutorService.submit(Callable) takes a Callable as input task
-		 * ExecutorService.execute(Runnable) takes a Runnable as input task
-		 */
+		//ExecutorService.submit(Callable) takes a Callable as input task
+		//ExecutorService.execute(Runnable) takes a Runnable as input task
 		Future<Integer> future = threadPool.submit(task);
 		System.out.println("Task is submitted");
 		
