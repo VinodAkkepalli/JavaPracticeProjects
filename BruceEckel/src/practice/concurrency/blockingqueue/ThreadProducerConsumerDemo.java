@@ -2,8 +2,8 @@ package practice.concurrency.blockingqueue;
 
 /**
  * 
- * <b>Description</b> : Multi-Threading demo using producer-consumer problem We
- * used BlockingQueue instead of using a simple Queue a BlockingQueue manages
+ * <b>Description</b> : Multi-Threading demo using producer-consumer problem. We
+ * used BlockingQueue instead of using a simple Queue. A BlockingQueue manages
  * blocking and waking up producers and consumers as per the size of the Queue
  * by itself
  * 
@@ -25,10 +25,12 @@ public class ThreadProducerConsumerDemo {
 		ProducerConsumerImpl poolObject = new ProducerConsumerImpl(poolSize);
 
 		ThreadProducer producer = new ThreadProducer(poolObject);
+		ThreadProducer producer2 = new ThreadProducer(poolObject);
 		ThreadConsumer consumer = new ThreadConsumer(poolObject);
 		ThreadConsumer consumer2 = new ThreadConsumer(poolObject);
 
 		(new Thread(producer)).start();
+		(new Thread(producer2)).start();
 		(new Thread(consumer)).start();
 		(new Thread(consumer2)).start();
 	}

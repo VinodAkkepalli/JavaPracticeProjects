@@ -1,22 +1,20 @@
-package practice.generics;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package practice.general.arrays;
+
 import java.util.Arrays;
 
-// The part of the program involving reading from STDIN and writing to STDOUT has been provided by us.
+/**
+ * Problem Description: https://www.geeksforgeeks.org/k-numbers-difference-maximum-minimum-k-number-minimized/
+ * @author Vinod Akkepalli
+ */
 
 public class MinUnfairness {
   
-   public static void main(String[] args) throws NumberFormatException, IOException {
+   public static void main(String[] args) throws NumberFormatException {
       int numPackets = 7;
       int numKids = 3;
       int[] packets = {10, 100, 300, 200, 1000, 20, 30};
       
       int unfairness = Integer.MAX_VALUE;
-      
-        // Write your code here, to process numPackets N, numKids K, and the packets of candies
-      // Compute the ideal value for unfairness over here
       
       Arrays.sort(packets);
       int i = 0, temp = 0;

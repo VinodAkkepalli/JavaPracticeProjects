@@ -31,7 +31,7 @@ public class ProducerConsumerImpl {
 		pool = new ArrayBlockingQueue<>(maxSize);
 	}
 
-	public void put() throws InterruptedException {
+	public void putObjectInPool() throws InterruptedException {
 
 		if (this.currentSize == this.maxSize) {
 			System.out.println(
@@ -44,7 +44,7 @@ public class ProducerConsumerImpl {
 		System.out.println("PRODUCER has produced an item: " + i);
 	}
 
-	public void get() throws InterruptedException {
+	public void getObjFromPool() throws InterruptedException {
 
 		if (0 == this.currentSize) {
 			System.out.println(

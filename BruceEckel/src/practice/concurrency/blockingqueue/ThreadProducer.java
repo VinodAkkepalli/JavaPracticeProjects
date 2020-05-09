@@ -11,11 +11,11 @@ package practice.concurrency.blockingqueue;
 
 public class ThreadProducer implements Runnable {
 
-	ProducerConsumerImpl pool;
+	ProducerConsumerImpl producerConsumer;
 
-	public ThreadProducer(ProducerConsumerImpl poolObject) {
+	public ThreadProducer(ProducerConsumerImpl producerConsumer) {
 
-		this.pool = poolObject;
+		this.producerConsumer = producerConsumer;
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class ThreadProducer implements Runnable {
 		try {
 
 			while (true) {
-				pool.put();
+				producerConsumer.putObjectInPool();
 				Thread.sleep(1000);
 			}
 
