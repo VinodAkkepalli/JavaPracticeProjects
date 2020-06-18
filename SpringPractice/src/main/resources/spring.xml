@@ -4,10 +4,49 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-   <bean name="pointA" class="Point">
-        <property name = "x" value = "0"/>
-        <property name = "y" value = "0"/>
+<!--    Injection using setters a.k.a. Setter DI -->
+   <bean id="pointA" class="Point">
+       <property name="x" value="0"/>
+       <property name="y" value="0"/>
     </bean>
 
+<!--    Injection using constructor arguments a.k.a. Constructor DI-->
+<!--    a different name given to circle-->
+    <bean id="circle" class="Circle" name="circle-name">
+        <constructor-arg name="radius" value="5"/>
+<!--        Injecting a reference to another object-->
+        <constructor-arg name="center" ref="pointA"/>
+    </bean>
+
+    <bean id="lineSegment" class="LineSegment">
+        <constructor-arg name="start" ref="pointA"/>
+<!--        Inner bean definition-->
+        <constructor-arg name="end">
+            <bean class="Point">
+                <constructor-arg name="x" value="1"/>
+                <constructor-arg name="y" value="1"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+<!--    alias definition-->
+    <alias name="lineSegment" alias="lineSegment-alias"/>
+
+    <bean id="triangle" class="Triangle">
+        <constructor-arg name="points">
+<!--            Spring supports collections initialization-->
+            <list>
+                <ref bean="pointA"/>
+                <bean class="Point">
+                    <constructor-arg name="x" value="0"/>
+                    <constructor-arg name="y" value="1"/>
+                </bean>
+                <bean class="Point">
+                    <constructor-arg name="x" value="1"/>
+                    <constructor-arg name="y" value="0"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
 
 </beans>
