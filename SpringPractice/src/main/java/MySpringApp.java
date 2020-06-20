@@ -1,4 +1,3 @@
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,5 +23,18 @@ public class MySpringApp {
 
         Triangle triangle = (Triangle) applicationContext.getBean("triangle");
         System.out.println(triangle.toString());
+
+//        experiment with scope change for this class in spring xml and observe number of instances created
+        ScopeTestClass scopeTestClass = (ScopeTestClass) applicationContext.getBean("scopeTestClass");
+        System.out.println(scopeTestClass);
+
+        ScopeTestClass scopeTestClass2 = (ScopeTestClass) applicationContext.getBean("scopeTestClass");
+        System.out.println(scopeTestClass2);
+
+        ContextUsingClass cuc = (ContextUsingClass) applicationContext.getBean("contextUsingClass");
+        System.out.println(cuc.toString());
+
+        Polygon polygon = (Polygon) applicationContext.getBean("childPolygon");
+        System.out.println(polygon.toString());
     }
 }

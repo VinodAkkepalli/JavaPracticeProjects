@@ -5,9 +5,19 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 <!--    Injection using setters a.k.a. Setter DI -->
-   <bean id="pointA" class="Point">
+   <bean id="zeroPoint" class="Point">
        <property name="x" value="0"/>
        <property name="y" value="0"/>
+    </bean>
+
+    <bean id="pointA" class="Point">
+        <constructor-arg name="x" value="0"/>
+        <constructor-arg name="y" value="1"/>
+    </bean>
+
+    <bean id="pointB" class="Point">
+        <constructor-arg name="x" value="1"/>
+        <constructor-arg name="y" value="0"/>
     </bean>
 
 <!--    Injection using constructor arguments a.k.a. Constructor DI-->
@@ -19,7 +29,7 @@
     </bean>
 
     <bean id="lineSegment" class="LineSegment">
-        <constructor-arg name="start" ref="pointA"/>
+        <constructor-arg name="start" ref="zeroPoint"/>
 <!--        Inner bean definition-->
         <constructor-arg name="end">
             <bean class="Point">
@@ -36,17 +46,44 @@
         <constructor-arg name="points">
 <!--            Spring supports collections initialization-->
             <list>
+                <ref bean="zeroPoint"/>
                 <ref bean="pointA"/>
-                <bean class="Point">
-                    <constructor-arg name="x" value="0"/>
-                    <constructor-arg name="y" value="1"/>
-                </bean>
-                <bean class="Point">
-                    <constructor-arg name="x" value="1"/>
-                    <constructor-arg name="y" value="0"/>
-                </bean>
+                <ref bean="pointB"/>
             </list>
         </constructor-arg>
     </bean>
 
+<!--    prototype scope creates new instance of bean class per request or reference
+        singleton scope creates only one instance per container no matter how many times bean is requested-->
+    <bean id="scopeTestClass" class="ScopeTestClass" scope="prototype">
+        <constructor-arg name="value" value="10"/>
+    </bean>
+
+    <bean id="contextUsingClass" class="ContextUsingClass">
+        <constructor-arg name="value" value="20"/>
+    </bean>
+
+<!--    parent bean; this can be abstract-->
+    <bean id="parentPolygon" class="Polygon" abstract="true">
+        <constructor-arg name="pointList">
+            <list>
+                <ref bean="zeroPoint"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+<!--    child bean-->
+    <bean id="childPolygon" class="Polygon" parent="parentPolygon">
+        <constructor-arg name="pointList">
+<!--            new beans are being added to list-->
+            <list merge="true">
+                <ref bean="pointA"/>
+                <ref bean="pointB"/>
+                <bean id="pointC" class="Point">
+                    <constructor-arg name="x" value="1"/>
+                    <constructor-arg name="y" value="1"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
 </beans>
