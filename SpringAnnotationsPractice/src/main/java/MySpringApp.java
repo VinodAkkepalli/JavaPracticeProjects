@@ -4,6 +4,8 @@ import com.practice.spring.shapes.Point;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Locale;
+
 /**
  * <b>Description</b> :
  *
@@ -22,5 +24,7 @@ public class MySpringApp {
 
         LineSegment lineSegment = (LineSegment) applicationContext.getBean("lineSegment");
         System.out.println(lineSegment.toString());
+
+        System.out.println("Retrieved message is: " + applicationContext.getMessage("message",null, Locale.getDefault()));
     }
 }

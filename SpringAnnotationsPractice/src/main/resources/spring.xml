@@ -25,4 +25,10 @@
 
     <context:annotation-config />
     <context:component-scan base-package="com.practice.spring.shapes"/>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+                <value>mymessages</value>
+        </property>
+    </bean>
 </beans>
