@@ -1,10 +1,8 @@
 package com.example.mvc;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.mvc.service.AddService;
@@ -13,17 +11,19 @@ import com.example.mvc.service.AddService;
 public class AddController {
 
 	@RequestMapping("/add")
-	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
-		
-		int a = Integer.parseInt(request.getParameter("input1"));
-		int b = Integer.parseInt(request.getParameter("input2"));
+	public ModelAndView add(@RequestParam("input1") int a, @RequestParam("input2") int b) {
 		
 		//Service layer separation
 		AddService as = new AddService();
 		int c = as.add(a, b);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("display.jsp");
+		/*
+		 * Notice we did not mention the .jsp suffix here
+		 * With help of com.example.MainServletConfig.viewResolver() method
+		 * we will be able to switch to a different 
+		 */
+		mv.setViewName("display");
 		mv.addObject("result", c);
 		return mv;
 	}
