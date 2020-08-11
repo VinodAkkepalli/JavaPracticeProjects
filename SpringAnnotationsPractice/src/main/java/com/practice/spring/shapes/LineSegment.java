@@ -2,6 +2,7 @@ package com.practice.spring.shapes;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,8 +13,8 @@ import javax.annotation.PreDestroy;
  * Data annotation of Project Lombok is used to avoid boilerplate code
  * @author Vinod Akkepalli
  */
-@Component
 @Data
+@Component("lineSegment")
 public class LineSegment {
 
     @Autowired
