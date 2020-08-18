@@ -95,8 +95,16 @@ public class IntStreamsPractice {
                 .filter(i -> i % 2 == 1)
                 .toArray()));
 
-        System.out.println(Arrays.toString(arr) + "Array has atleast one even number : "
-                + Arrays.stream(arr)
+        List<Integer> list = Arrays.asList(1, 10, 3, 7, 5);
+        int a = list.stream()
+                .filter(i -> i > 5)
+                .findFirst()
+                .orElse(0);
+        System.out.println("First element greater than 5: " + a);
+
+        int[] arr1 = {};
+        System.out.println(Arrays.toString(arr1) + "Array has atleast one even number : "
+                + Arrays.stream(arr1)
                 .anyMatch(i -> i % 2 == 0));
 
         System.out.println(Arrays.toString(arr) + "All numbers of array are  odd numbers : "

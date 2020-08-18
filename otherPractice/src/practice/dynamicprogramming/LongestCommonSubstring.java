@@ -14,18 +14,18 @@ package practice.dynamicprogramming;
 
 public class LongestCommonSubstring {
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		LongestCommonSubstring lcs = new LongestCommonSubstring();
-		char str1[] = "GeeksforGeeks".toCharArray();
-		char str2[] = "GeeksQuiz".toCharArray();
+		char[] str1 = "GeeksforGeeks".toCharArray();
+		char[] str2 = "GeeksQuiz".toCharArray();
 		System.out.println(lcs.longestCommonSubstring(str1, str2));
 		System.out.println(lcs.longestCommonSubstringRec(str1, str2, str1.length - 1, str2.length - 1, false));
 	}
 
 	
 	//Dynamic Programming solution
-	public int longestCommonSubstring(char str1[], char str2[]) {
-		int T[][] = new int[str1.length + 1][str2.length + 1];
+	public int longestCommonSubstring(char[] str1, char[] str2) {
+		int[][] T = new int[str1.length + 1][str2.length + 1];
 
 		int max = 0;
 		for (int i = 1; i <= str1.length; i++) {
@@ -44,7 +44,7 @@ public class LongestCommonSubstring {
 
 	
 	//Recursive way of calculating lcs
-	public int longestCommonSubstringRec(char str1[], char str2[], int pos1, int pos2, boolean checkEqual) {
+	public int longestCommonSubstringRec(char[] str1, char[] str2, int pos1, int pos2, boolean checkEqual) {
 		if (pos1 == -1 || pos2 == -1) {
 			return 0;
 		}
