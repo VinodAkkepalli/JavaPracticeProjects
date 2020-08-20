@@ -4,8 +4,8 @@ import java.lang.Thread.UncaughtExceptionHandler;
 
 /**
  * 
- * <b>Description</b> : Demo of UncaughtExeptionHandler in Multi-Threading When
- * definedUncaughtExceptionHandler's uncaughtException method will be executed
+ * <b>Description</b> : Demo of UncaughtExceptionHandler in Multi-Threading
+ * When defined, UncaughtExceptionHandler's uncaughtException method will be executed
  * whenever a thread throws an exception
  * 
  * @author Vinod Akkepalli
@@ -24,9 +24,6 @@ public class UncaughtExceptionHandlerDemo implements Runnable {
 		}
 	};
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		UncaughtExceptionHandlerDemo ueh = new UncaughtExceptionHandlerDemo();

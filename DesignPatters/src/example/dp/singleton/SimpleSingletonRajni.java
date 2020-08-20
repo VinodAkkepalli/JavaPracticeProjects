@@ -10,11 +10,11 @@ public class SimpleSingletonRajni {
     private SimpleSingletonRajni() {
     }
 
-    private static class StaticInnerClass {
+    private static class StaticNestedClass {
         private static final SimpleSingletonRajni INSTANCE = new SimpleSingletonRajni();
     }
 
     public static SimpleSingletonRajni getInstance() {
-        return StaticInnerClass.INSTANCE;
+        return StaticNestedClass.INSTANCE;
     }
 }

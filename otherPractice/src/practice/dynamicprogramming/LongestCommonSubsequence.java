@@ -1,7 +1,5 @@
 package practice.dynamicprogramming;
 
-import java.util.Arrays;
-
 /**
  * 
  * @author Vinod Akkepalli 
@@ -21,24 +19,24 @@ public class LongestCommonSubsequence {
 		char[] s1Chr = s1.toCharArray();
 		char[] s2Chr = s2.toCharArray();
 
-		System.out.println("Length of Longest Common Subsequence using DP approach is" + " " + longestCommonSubsequnceDPBU(s1Chr, s2Chr));
+		System.out.println("Length of Longest Common Subsequence using DP approach is" + " " + longestCommonSubsequenceDPBU(s1Chr, s2Chr));
 		System.out.println("Length of Longest Common Subsequence using Recursive approach is" + " "
-				+ longestCommonSubsequnceRec(s1Chr, s2Chr, s1Chr.length, s2Chr.length));
+				+ longestCommonSubsequenceRec(s1Chr, s2Chr, s1Chr.length, s2Chr.length));
 	}
 
 	// Recursive approach with TC(2^n)
 	// Returns length of LCS for X[0..m-1], Y[0..n-1]
-	static int longestCommonSubsequnceRec(char[] X, char[] Y, int m, int n) {
+	static int longestCommonSubsequenceRec(char[] X, char[] Y, int m, int n) {
 		if (m == 0 || n == 0)
 			return 0;
 		if (X[m - 1] == Y[n - 1])
-			return 1 + longestCommonSubsequnceRec(X, Y, m - 1, n - 1);
+			return 1 + longestCommonSubsequenceRec(X, Y, m - 1, n - 1);
 		else
-			return Math.max(longestCommonSubsequnceRec(X, Y, m, n - 1), longestCommonSubsequnceRec(X, Y, m - 1, n));
+			return Math.max(longestCommonSubsequenceRec(X, Y, m, n - 1), longestCommonSubsequenceRec(X, Y, m - 1, n));
 	}
 
 	// Dynamic Programming approach with TC O(m*n)
-	private static int longestCommonSubsequnceDPBU(char[] str1, char[] str2) {
+	private static int longestCommonSubsequenceDPBU(char[] str1, char[] str2) {
 
 		int m = str1.length;
 		int n = str2.length;

@@ -20,6 +20,7 @@ public class CallableFactorialCalcTask implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception {
 
+		System.out.println("Thread name is: " + Thread.currentThread().getName());
 		int result = 1;
 		for (int i = this.number; i > 1; i--) {
 			result *= i;

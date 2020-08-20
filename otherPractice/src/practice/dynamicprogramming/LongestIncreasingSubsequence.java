@@ -37,7 +37,7 @@ public class LongestIncreasingSubsequence {
 				}
 			}
 		}
-		System.out.println("longestSubSequence: " + Arrays.toString(longestSubSequence));
+//		System.out.println("longestSubSequence: " + Arrays.toString(longestSubSequence));
 		return longestSubSequence[n-1];
 	}
 }

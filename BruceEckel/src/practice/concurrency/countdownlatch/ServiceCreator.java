@@ -25,7 +25,7 @@ public class ServiceCreator implements Runnable {
 	@Override
 	public void run() {
 
-		System.out.println(this.name + " is Up and Running!!");
+		System.out.println(this.name + " is ready to Run!!");
 		try {
 			synchronized (this) {
 				this.wait(1000);
@@ -36,5 +36,6 @@ public class ServiceCreator implements Runnable {
 			Thread.currentThread().interrupt();
 		}
 		this.cdl.countDown();
+		System.out.println(this.name + " is Up and Running!!");
 	}
 }

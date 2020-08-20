@@ -5,7 +5,7 @@ package practice.dynamicprogramming;
  * @author Vinod Akkepalli 
  * 	Problem Description: Edit Distance Problem 
  * 		Given two strings str1 and str2. Find minimum number of edits (operations)
- *		required to convert ‘str1’ into ‘str2’. Allowed operations are:    Insert, Remove & Replace
+ *		required to convert str1 into str2. Allowed operations are:    Insert, Remove & Replace
  *      https://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/
  */
 

@@ -20,7 +20,7 @@ public class CountDownLatchDemo {
 	public static void main(String[] args) {
 
 		// CountDownLatch to wait for 5 threads to call coutDown()
-		final CountDownLatch cdl = new CountDownLatch(5);
+		final CountDownLatch cdl = new CountDownLatch(4);
 
 		ServiceCreator sc1 = new ServiceCreator("EarthService", cdl);
 		ServiceCreator sc2 = new ServiceCreator("WaterService", cdl);

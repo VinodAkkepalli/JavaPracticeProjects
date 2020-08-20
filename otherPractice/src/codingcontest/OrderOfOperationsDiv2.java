@@ -1,15 +1,10 @@
 package codingcontest;
-import java.util.*;
-import java.util.regex.*;
-import java.text.*;
-import java.math.*;
-import java.awt.geom.*;
 
 public class OrderOfOperationsDiv2
 {
 	public int minTime(String[] s)
 	{
-		
+	return 0;
 	}
 	
 	public static void main(String[] args)

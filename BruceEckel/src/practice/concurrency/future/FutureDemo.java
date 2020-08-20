@@ -29,7 +29,8 @@ public class FutureDemo {
 		//ExecutorService.execute(Runnable) takes a Runnable as input task
 		Future<Integer> future = threadPool.submit(task);
 		System.out.println("Task is submitted");
-		
+		System.out.println("Thread name is: " + Thread.currentThread().getName());
+
 		while (!future.isDone()) {
 			System.out.println("Task is not completed yet....");
 			Thread.sleep(1); // sleep for 1 millisecond before checking again

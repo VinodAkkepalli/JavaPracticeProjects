@@ -1,7 +1,5 @@
 package practice.dynamicprogramming;
 
-import java.util.Arrays;
-
 /**
  * 
  * @author Vinod Akkepalli Problem Description: Knapsack Problem Given weights
@@ -14,8 +12,8 @@ public class KnapsackProblem {
 
 	public static void main(String[] args) {
 
-		int values[] = new int[] { 60, 100, 120 };
-		int weights[] = new int[] { 10, 20, 30 };
+		int[] values = new int[] { 60, 100, 120 };
+		int[] weights = new int[] { 10, 20, 30 };
 		int requiredWeight = 50;
 		int valuesLength = values.length;
 		System.out.println("Highest value is: " + knapSackRec(requiredWeight, weights, values, valuesLength));
@@ -42,7 +40,7 @@ public class KnapsackProblem {
 	// requiredWeight
 	private static int knapSackDPBU(int requiredWeight, int[] weights, int[] values, int length) {
 		int i, j;
-		int matrix[][] = new int[length + 1][requiredWeight + 1];
+		int[][] matrix = new int[length + 1][requiredWeight + 1];
 
 		// Build table K[][] in bottom up manner
 		for (i = 0; i <= length; i++) {

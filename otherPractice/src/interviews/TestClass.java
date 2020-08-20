@@ -15,7 +15,18 @@ import java.io.InputStreamReader;
 class TestClass {
     
 	public static void main(String args[] ) throws Exception {
-    
+
+
+		int x = 1;
+		int y =1;
+		int z = 1;
+		int a= 1;
+		boolean cond = (a == x && x == y &&  y == z);
+
+
+
+
+
     	String input = new String("scrum of scrums");
     	
     	int len = input.length();
