@@ -1,5 +1,7 @@
 package practice.concurrency.blockingqueue;
 
+import java.util.concurrent.BlockingQueue;
+
 /**
  * 
  * <b>Description</b> : Producer class which pushes random integers into the
@@ -11,27 +13,32 @@ package practice.concurrency.blockingqueue;
 
 public class ThreadProducer implements Runnable {
 
-	ProducerConsumerImpl producerConsumer;
+	public BlockingQueue<Integer> pool;
+	public int capacity;
 
-	public ThreadProducer(ProducerConsumerImpl producerConsumer) {
-
-		this.producerConsumer = producerConsumer;
+	public ThreadProducer(BlockingQueue<Integer> bq, int size) {
+		this.pool = bq;
+		this.capacity = size;
 	}
 
 	@Override
 	public void run() {
+		while (true) {
+			try {
 
-		try {
+				if (pool.size() == capacity) {
+					System.out.println(
+							"BlockingQueue is full, PRODUCER is waiting for CONSUMER action!!");
+				}
 
-			while (true) {
-				producerConsumer.putObjectInPool();
+				int i = (int) (Math.random() * 10);
+				pool.put(i);
+				System.out.println("PRODUCER has produced an item: " + i);
 				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			Thread.currentThread().interrupt();
 		}
 	}
-
 }

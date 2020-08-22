@@ -1,5 +1,7 @@
 package practice.concurrency.blockingqueue;
 
+import java.util.concurrent.BlockingQueue;
+
 /**
  * 
  * 
@@ -11,25 +13,30 @@ package practice.concurrency.blockingqueue;
  */
 public class ThreadConsumer implements Runnable {
 
-	ProducerConsumerImpl producerConsumer;
 
-	public ThreadConsumer(ProducerConsumerImpl producerConsumer) {
+	public BlockingQueue<Integer> pool;
 
-		this.producerConsumer = producerConsumer;
+	public ThreadConsumer(BlockingQueue<Integer> bq) {
+		this.pool = bq;
 	}
 
 	@Override
 	public void run() {
-		try {
+		int i;
+		while (true) {
+			try {
+				if (pool.isEmpty()) {
+					System.out.println(
+							"BlockingQueue is empty, CONSUMER is waiting for PRODUCER action!!");
+				}
+				i = pool.take();
+				System.out.println("CONSUMER consumed item: " + i);
 
-			while (true) {
-				producerConsumer.getObjFromPool();
 				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			Thread.currentThread().interrupt();
 		}
 	}
 

@@ -7,8 +7,7 @@ import java.util.concurrent.Semaphore;
 /**
  * 
  * <b>Description</b> : solution to producer consumer problem using binary
- * Semaphore. SynchronizationProducer class is using binary semaphore to
- * mutually exclude its instances.
+ * Semaphore. producer and consumer classes use two semaphores to achieve exclusive access
  * 
  * @author Vinod Akkepalli
  *
@@ -16,28 +15,24 @@ import java.util.concurrent.Semaphore;
 
 public class SemaphoreDemo {
 
-	private static final Semaphore binary = new Semaphore(1);
+	private static final Semaphore producerSemaphore = new Semaphore(1);
+	//semaphore initialized with 0 to make consumer wait for producer to start first
+	private static final Semaphore consumerSemaphore = new Semaphore(0);
 	protected static final Queue<Integer> pool = new LinkedList<>();
 
 	private SemaphoreDemo() {
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		int maxSize = 4;
 
-		SynchronizationProducer producer1 = new SynchronizationProducer(pool,
-				maxSize, "PRODUCER1", binary);
-		SynchronizationProducer producer2 = new SynchronizationProducer(pool,
-				maxSize, "PRODUCER2", binary);
-		SynchronizationConsumer consumer = new SynchronizationConsumer(pool,
-				"CONSUMER");
+		ThreadProducer producer = new ThreadProducer(pool,
+				maxSize, "PRODUCER", producerSemaphore, consumerSemaphore);
+		ThreadConsumer consumer = new ThreadConsumer(pool,
+				"CONSUMER", producerSemaphore, consumerSemaphore);
 
-		new Thread(producer1).start();
-		new Thread(producer2).start();
+		new Thread(producer).start();
 		new Thread(consumer).start();
 	}
 

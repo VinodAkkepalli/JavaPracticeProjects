@@ -43,7 +43,7 @@ interface MyFunctionalInterface2 {
     }
 }
 
-// Diamond problem arises when we don't inherit common default method myMethod2
+// Diamond problem arises when we don't inherit common default method method2
 class ClassForDiamondProblemDemo implements MyFunctionalInterface1, MyFunctionalInterface2 {
 
     @Override
@@ -58,7 +58,7 @@ class ClassForDiamondProblemDemo implements MyFunctionalInterface1, MyFunctional
 
     @Override
     public void method2() {
-        System.out.println("ClassForDiamondProblemDemo::method()");
+        System.out.println("ClassForDiamondProblemDemo::method2()");
     }
 }
 

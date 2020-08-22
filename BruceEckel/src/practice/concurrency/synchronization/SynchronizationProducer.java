@@ -1,7 +1,6 @@
 package practice.concurrency.synchronization;
 
 import java.util.Queue;
-import java.util.Random;
 
 /**
  * 
@@ -13,7 +12,7 @@ import java.util.Random;
  */
 public class SynchronizationProducer implements Runnable {
 
-	private Queue<Integer> pool;
+	private final Queue<Integer> pool;
 	private String name;
 	private final int maxSize;
 
@@ -28,7 +27,6 @@ public class SynchronizationProducer implements Runnable {
 	@Override
 	public void run() {
 
-		Random random;
 		int i;
 
 		while (true) {
@@ -45,13 +43,12 @@ public class SynchronizationProducer implements Runnable {
 					}
 				}
 
-				random = new Random();
-				i = random.nextInt();
+				i = (int) (Math.random() * 10);
 				System.out.println(name + " produced item: " + i);
 				pool.add(i);
 
 				try {
-					wait(1000);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 					Thread.currentThread().interrupt();

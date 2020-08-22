@@ -1,5 +1,8 @@
 package practice.concurrency.blockingqueue;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 /**
  * 
  * <b>Description</b> : Multi-Threading demo using producer-consumer problem. We
@@ -16,18 +19,15 @@ public class ThreadProducerConsumerDemo {
 	private ThreadProducerConsumerDemo() {
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
-		int poolSize = 10;
-		ProducerConsumerImpl poolObject = new ProducerConsumerImpl(poolSize);
+		int poolSize = 2;
+		BlockingQueue<Integer> pool = new ArrayBlockingQueue<>(poolSize);
 
-		ThreadProducer producer = new ThreadProducer(poolObject);
-		ThreadProducer producer2 = new ThreadProducer(poolObject);
-		ThreadConsumer consumer = new ThreadConsumer(poolObject);
-		ThreadConsumer consumer2 = new ThreadConsumer(poolObject);
+		ThreadProducer producer = new ThreadProducer(pool, poolSize);
+		ThreadProducer producer2 = new ThreadProducer(pool, poolSize);
+		ThreadConsumer consumer = new ThreadConsumer(pool);
+		ThreadConsumer consumer2 = new ThreadConsumer(pool);
 
 		(new Thread(producer)).start();
 		(new Thread(producer2)).start();

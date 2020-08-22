@@ -14,21 +14,23 @@ import java.util.concurrent.SynchronousQueue;
 
 public class SynchronousQueueConsumer implements Runnable {
 
-	private SynchronousQueue<String> queue = new SynchronousQueue<String>();
+	private SynchronousQueue<Integer> queue;
 
-	public SynchronousQueueConsumer(Queue<String> queue) {
-		this.queue = (SynchronousQueue<String>) queue;
+	public SynchronousQueueConsumer(Queue<Integer> queue) {
+		this.queue = (SynchronousQueue<Integer>) queue;
 	}
 
 	@Override
 	public void run() {
 		try {
-			System.out.println(Thread.currentThread().getName()
-					+ " waiting for the string!!!");
-			String str = queue.take();
-			System.out.println("The string is: " + str);
-			System.out.println(Thread.currentThread().getName()
-					+ " finished consuming the string !!!");
+			while (true) {
+				System.out.println(Thread.currentThread().getName()
+						+ " waiting for the string!!!");
+				Integer i = queue.take();
+				System.out.println(Thread.currentThread().getName()
+						+ " consuming: " + i);
+				Thread.sleep(1000);
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			Thread.currentThread().interrupt();
