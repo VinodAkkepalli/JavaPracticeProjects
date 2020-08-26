@@ -4,8 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * <b>Description</b> : ThreadPool implementation
- * https://www.youtube.com/watch?v=ZDf4EnTR9RE
+ * <b>Description</b> : ThreadPool implementation using BlockingQueue and worker threads
  *
  *
  * @author Vinod Akkepalli
@@ -25,27 +24,16 @@ public class ThreadPool {
     }
 
     public void execute(Runnable task) {
-        synchronized (queue) {
-            queue.add(task);
-            queue.notify();
-        }
+            queue.offer(task);
     }
 
     private class PoolWorker extends Thread {
         public void run() {
             Runnable task;
 
-            while (true) {
-                synchronized (queue) {
-                    while (queue.isEmpty()) {
-                        try {
-                            queue.wait();
-                        } catch (InterruptedException e) {
-                            System.out.println("An error occurred while queue is waiting: " + e.getMessage());
-                        }
-                    }
-                    task = queue.poll();
-                }
+            while (!queue.isEmpty()) {
+
+                task = queue.poll();
 
                 // If we don't catch RuntimeException,
                 // the pool could leak threads
@@ -61,7 +49,7 @@ public class ThreadPool {
     public static void main(String[] args) {
         ThreadPool pool = new ThreadPool(7);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 100; i++) {
             MyTask task = new MyTask(i);
             pool.execute(task);
         }
