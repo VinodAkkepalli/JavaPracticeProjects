@@ -150,6 +150,47 @@ public class TrieImpl {
         return false;
     }
 
+    private void printAutoSuggestions(String prefix) {
+
+        int pfLen = prefix.length();
+        TrieNode currNode = root;
+
+        if(root.children.isEmpty()) {
+            System.out.println("No suggestions");
+        }
+
+        //Get to the TrieNode of final character of prefix if exists
+        for (int i = 0; i < pfLen; i++) {
+            if(currNode.children.containsKey(prefix.charAt(i))) {
+                currNode = currNode.children.get(prefix.charAt(i));
+            } else {
+                System.out.println("path available only up to: " + prefix.substring(0,i));
+                System.out.println("No Suggestions");
+                return;
+            }
+        }
+
+        //Print all subtrees of TrieNode of the final character of prefix
+        printSubtree(currNode, prefix);
+    }
+
+    //Recursively print all strings
+    private void printSubtree(TrieNode currNode, String prefix) {
+        if(currNode.children.isEmpty()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        //If a TrieNode marks end of word, print the word
+        if(currNode.endOfWord) {
+            System.out.println(prefix);
+        }
+
+        for (Map.Entry<Character, TrieNode> entry: currNode.children.entrySet()) {
+            printSubtree(entry.getValue(), prefix + entry.getKey());
+        }
+    }
+
     public static void main(String[] args) {
         TrieImpl trie = new TrieImpl();
 
@@ -174,5 +215,14 @@ public class TrieImpl {
         trie.delete("vinodakkepalli");
         System.out.println("vinodakkepalli present: " +  trie.search("vinodakkepalli"));
         System.out.println("vinod present: " +  trie.search("vinod"));
+
+
+
+        trie.insert("vinodakkepalli");
+        trie.insert("vimal");
+        trie.insert("vi");
+
+        System.out.println("****Auto suggestions are***");
+        trie.printAutoSuggestions("vi");
     }
 }
