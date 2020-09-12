@@ -15,8 +15,9 @@ public class AnagramGrouping {
 
     public static void main(String[] args) {
 
-        List<String> strList = new ArrayList<>(Arrays.asList(
-                "cat", "dog", "loop", "act", "pool", "ogd", "city", "god"));
+//        List<String> strList = new ArrayList<>(Arrays.asList(
+//                "cat", "dog", "loop", "act", "pool", "ogd", "city", "god"));
+        List<String> strList = List.of("cat", "dog", "loop", "act", "pool", "ogd", "city", "god");
         groupAnagrams(strList);
     }
 
