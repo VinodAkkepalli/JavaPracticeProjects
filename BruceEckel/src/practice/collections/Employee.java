@@ -12,6 +12,10 @@ public class Employee implements Comparable<Employee>{
 		return eNumber;
 	}
 
+	public EmployeeName geteName() {
+		return eName;
+	}
+
 	public Calendar getHireDate() {
 		return hireDate;
 	}

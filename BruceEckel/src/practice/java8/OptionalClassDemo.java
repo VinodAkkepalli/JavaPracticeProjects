@@ -1,4 +1,4 @@
-package practice.streams;
+package practice.java8;
 
 import java.util.Optional;
 

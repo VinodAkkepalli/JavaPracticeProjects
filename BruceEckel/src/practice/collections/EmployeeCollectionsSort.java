@@ -1,6 +1,7 @@
 package practice.collections;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -68,14 +69,44 @@ public class EmployeeCollectionsSort {
 		Collections.sort(empList);
 		System.out.println(empList);
 		
-		System.out.println("Employee details sorted on seniority(hireDate)");		
+		System.out.println("Employee details sorted on seniority(hireDate)");
 		Collections.sort(empList, SENIORITY_ORDER);
 		System.out.println(empList);
-		
+
+		System.out.println("Employee details sorted on seniority(hireDate) most senior -> lease senior");
+		Collections.sort(empList, (e1, e2) -> e1.getHireDate().compareTo(e2.getHireDate()) );
+		System.out.println(empList);
+
+		//same sort as above in short format
+		Collections.sort(empList, Comparator.comparing(Employee::getHireDate));
+		System.out.println(empList);
+
 		System.out.println("Employee details sorted on employee number");		
 		empList.sort(EMPLOYEE_ID);
 		System.out.println(empList);
-		
+		Collections.sort(empList, (first,second) -> first.geteNumber().compareTo(second.geteNumber()));
+		System.out.println(empList);
+
+
+		streamOperationsPractice(empDetails);
+	}
+
+	private static void streamOperationsPractice(Employee[] empDetails) {
+
+		System.out.println("print employees whose first name starts with 'J'");
+		Arrays.stream(empDetails).filter(e -> e.geteName().getFirstName().startsWith("J")).forEach(System.out::println);
+
+		System.out.println("print employee names whose emp number is greater than 1002");
+		List<EmployeeName> names = Arrays.stream(empDetails).filter(e -> e.geteNumber() > 1002).map(Employee::geteName).collect(Collectors.toList());
+		System.out.println(names);
+
+		System.out.println("Group employees by employee last name");
+		Map<String, List<Employee>> groupedEmployees = Arrays.stream(empDetails).collect(Collectors.groupingBy(employee -> employee.geteName().getLastName()));
+		System.out.println(groupedEmployees);
+
+		System.out.println("flatmap usage");
+//		groupedEmployees.entrySet().forEach(System.out::println);
+		groupedEmployees.entrySet().stream().flatMap(e -> e.getValue().stream()).forEach(System.out::println);
 	}
 
 }

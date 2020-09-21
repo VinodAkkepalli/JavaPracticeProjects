@@ -1,4 +1,4 @@
-package practice.streams;
+package practice.java8;
 
 /**
  * <b>Description</b> : Static & Default methods of Functional Interfaces
@@ -14,19 +14,19 @@ interface MyFunctionalInterface1 {
 
     // static methods
     static void method1(){
-        System.out.println("Method1 Static");
+        System.out.println("MyFunctionalInterface1::Method1 Static");
     }
     static void method3(){
-        System.out.println("Method3 Static");
+        System.out.println("MyFunctionalInterface1::Method3 Static");
     }
 
     // Default methods
     default void method2(){
-        System.out.println("Method2 Default");
+        System.out.println("MyFunctionalInterface1::Method2 Default");
     }
 
     default void method4(){
-        System.out.println("Method4 Default");
+        System.out.println("MyFunctionalInterface1::Method4 Default");
     }
 
     // Method of Object class declared as Abstract method does not count
@@ -56,6 +56,11 @@ class ClassForDiamondProblemDemo implements MyFunctionalInterface1, MyFunctional
         System.out.println("ClassForDiamondProblemDemo::abstractMethod2()");
     }
 
+    public void accessParentInterfaceMethods() {
+        MyFunctionalInterface1.method3();   //to access static methods of implemented interface
+        MyFunctionalInterface1.super.method2(); //way to access default methods of implemented Interface
+    }
+
     @Override
     public void method2() {
         System.out.println("ClassForDiamondProblemDemo::method2()");
@@ -65,9 +70,8 @@ class ClassForDiamondProblemDemo implements MyFunctionalInterface1, MyFunctional
 public class FunctionalInterfacesStaticDefaultMethods {
 
     public static void main(String[] args) {
-        FunctionalInterfacesStaticDefaultMethods fim = new FunctionalInterfacesStaticDefaultMethods();
         // Lambda function using MyFunctionalInterface
-        MyFunctionalInterface1 mfi = () -> System.out.println("MyFunctionalInterface implemented");
+        MyFunctionalInterface1 mfi = () -> System.out.println("MyFunctionalInterface1 implemented");
         mfi.abstractMethod();
 
         mfi.method2();  // Default method accessed
@@ -78,5 +82,6 @@ public class FunctionalInterfacesStaticDefaultMethods {
         cdp.abstractMethod();
         cdp.abstractMethod2();
         cdp.method2();
+        cdp.accessParentInterfaceMethods();
     }
 }
