@@ -1,4 +1,4 @@
-package practice.general;
+package practice.dynamicprogramming;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package practice.dynamicprogramming;
+package practice.dynamicprogramming.knapsack;
 
 /**
  * 
@@ -8,10 +8,10 @@ package practice.dynamicprogramming;
  *	https://www.geeksforgeeks.org/dynamic-programming-set-18-partition-problem/
  */
 
-public class PartitionProblem {
+public class EqualSumPartitionProblem {
 
 	public static void main(String[] args) {
-		int arr[] = { 3, 1, 5, 9, 12 };
+		int[] arr = { 3, 1, 5, 9, 12 };
 		int arrLen = arr.length;
 
 		if (findPartitionDPBU(arr, arrLen)) {
