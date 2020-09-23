@@ -1,4 +1,4 @@
-package example.dp.singleton;
+package example.designpattern.creational.singleton;
 
 /**
  * <b>Java code for Bill Pugh Singleton Implementation</b> :

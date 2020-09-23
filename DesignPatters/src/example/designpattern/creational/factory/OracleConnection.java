@@ -1,4 +1,4 @@
-package example.dp.factory;
+package example.designpattern.creational.factory;
 
 public class OracleConnection extends Connection {
 
