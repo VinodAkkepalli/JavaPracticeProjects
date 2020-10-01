@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
  *
  */
 
-public class FutureDemo {
+class FutureDemo {
 
 	public static final ExecutorService threadPool = Executors
 			.newFixedThreadPool(3);
@@ -38,12 +38,11 @@ public class FutureDemo {
 
 		System.out.println("Task is completed, let's check result");
 		//get() method collects the return value from Callable
-		int factorial = future.get();
+		int factorial = future.get();	//Blocking
 
 		System.out.println("Factorial of 10 is : " + factorial);
 		
 		//We need to shutdown an ExecutorService after use   
 		threadPool.shutdown();
-
 	}
 }

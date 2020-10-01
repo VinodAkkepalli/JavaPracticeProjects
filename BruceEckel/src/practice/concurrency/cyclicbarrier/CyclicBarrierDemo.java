@@ -54,6 +54,9 @@ public class CyclicBarrierDemo {
 		new Thread(sc8).start();
 		new Thread(sc9).start();
 		new Thread(sc10).start();
+
+		System.out.println("Message from main thread. " +
+				"Main thread does not depend on any of the other threads");
 	}
 
 }

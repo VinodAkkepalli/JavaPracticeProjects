@@ -20,9 +20,7 @@ public class ThreadProducer implements Runnable {
 	private Semaphore consumerSemaphore;
 
 
-	public ThreadProducer(Queue<Integer> poolQueue, int maxSize,
-						  String name, Semaphore ps, Semaphore cs) {
-
+	public ThreadProducer(Queue<Integer> poolQueue, String name, Semaphore ps, Semaphore cs) {
 		this.pool = poolQueue;
 		this.name = name;
 		this.producerSemaphore = ps;

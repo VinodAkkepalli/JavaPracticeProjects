@@ -8,7 +8,7 @@ package practice.concurrency;
 public class ThreadLocalDemo implements Runnable {
 
     private Integer shareInteger;
-    private ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private ThreadLocal<Integer> integerThreadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
         ThreadLocalDemo sharedObject = new ThreadLocalDemo();
@@ -27,8 +27,8 @@ public class ThreadLocalDemo implements Runnable {
 
         System.out.println("**values accessed from main thread**");
         System.out.println("Shared Integer is: " + sharedObject.shareInteger);
-        System.out.println("ThreadLocal Object reference is: " + sharedObject.threadLocal);
-        System.out.println("ThreadLocal Object valueis: " + sharedObject.threadLocal.get());
+        System.out.println("ThreadLocal Object reference is: " + sharedObject.integerThreadLocal);
+        System.out.println("ThreadLocal Object valueis: " + sharedObject.integerThreadLocal.get());
 
     }
 
@@ -36,7 +36,7 @@ public class ThreadLocalDemo implements Runnable {
     public void run() {
 
         synchronized (ThreadLocalDemo.class) {
-            threadLocal.set((int) (Math.random() * 100));
+            integerThreadLocal.set((int) (Math.random() * 100));
             shareInteger = (int) (Math.random() * 100);
         }
 
@@ -46,9 +46,9 @@ public class ThreadLocalDemo implements Runnable {
             e.printStackTrace();
         }
         //This Object is expected to be same for both threads
-        System.out.println(Thread.currentThread().getName() + "::ThreadLocal Object : " + threadLocal);
+        System.out.println(Thread.currentThread().getName() + "::ThreadLocal Object : " + integerThreadLocal);
         //This value is local to each thread
-        System.out.println(Thread.currentThread().getName() + "::ThreadLocal Integer value : " + threadLocal.get());
+        System.out.println(Thread.currentThread().getName() + "::ThreadLocal Integer value : " + integerThreadLocal.get());
         //This value is different for each thread, but final value is retained
         System.out.println(Thread.currentThread().getName() + "::shared Integer value: " + shareInteger);
     }

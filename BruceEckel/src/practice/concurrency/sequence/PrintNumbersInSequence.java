@@ -1,7 +1,7 @@
 package practice.concurrency.sequence;
 
 /**
- * <b>Description</b> :
+ * <b>Description</b> : Print numbers in sequence using thread synchronization
  *
  * @author Vinod Akkepalli
  */

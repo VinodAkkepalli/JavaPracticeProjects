@@ -25,10 +25,8 @@ public class SemaphoreDemo {
 
 	public static void main(String[] args) {
 
-		int maxSize = 4;
-
 		ThreadProducer producer = new ThreadProducer(pool,
-				maxSize, "PRODUCER", producerSemaphore, consumerSemaphore);
+				"PRODUCER", producerSemaphore, consumerSemaphore);
 		ThreadConsumer consumer = new ThreadConsumer(pool,
 				"CONSUMER", producerSemaphore, consumerSemaphore);
 
