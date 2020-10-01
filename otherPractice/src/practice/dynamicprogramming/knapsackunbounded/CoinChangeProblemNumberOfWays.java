@@ -1,4 +1,4 @@
-package practice.dynamicprogramming;
+package practice.dynamicprogramming.knapsackunbounded;
 
 import java.util.Arrays;
 
@@ -6,13 +6,14 @@ import java.util.Arrays;
  * 
  * @author Vinod Akkepalli
  *
- *	Problem Description: Given a set/array of coin "denominationsArray", find the count of 
- *	minimum number of coins required to make the sum "requiredSum"
+ *	Problem Description: Given a set/array of coin "denominationsArray", find the
+ *	number of ways coins can be arranged to make the sum "requiredSum"
+ *	constraint: Unlimited supply of given denominations available
  *
  *	https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
  */
 
-public class CoinChangeProblem {
+public class CoinChangeProblemNumberOfWays {
 
 	public static void main(String[] args) {
 		
@@ -25,10 +26,10 @@ public class CoinChangeProblem {
 		Arrays.fill(minCountArray, 9999);
 		minCountArray[0] = 0;   // base case
 		
-		minCount = findMinCountCoinChange(requiredSum, minCount, denominationsArray);
-		int minCountDPTD = findMinCountCoinChangeDPTD(requiredSum, denominationsArray, 
+		minCount = findNumberOfWaysCoinChange(requiredSum, minCount, denominationsArray);
+		int minCountDPTD = findNumberOfWaysCoinChangeDPTD(requiredSum, denominationsArray,
 				minCountArray);
-		int minCountDPBU = findMinCountCoinChangeDPBU(requiredSum, denominationsArray);
+		int minCountDPBU = findNumberOfWaysCoinChangeDPBU(requiredSum, denominationsArray);
 		
 		System.out.println("Minimum number of coins required is: " + minCount);
 		System.out.println("DP Top-Down solution:  " + Arrays.toString(minCountArray));
@@ -37,17 +38,17 @@ public class CoinChangeProblem {
 	}
 
 	// This is a recursive solution with exponential time complexity
-	private static int findMinCountCoinChange(int sumReq, int minCount, int[] denominationsArray) {
+	private static int findNumberOfWaysCoinChange(int sumReq, int minCount, int[] denominationsArray) {
 		int arraySize = denominationsArray.length;
 		
 		if(sumReq == 0) {
-			return 0;
+			return 1;
 		}
 		
 		for(int i = 0; i < arraySize; i++) {
 			if(denominationsArray[i] <= sumReq) {
 				minCount = Math.min( 
-						 findMinCountCoinChange(sumReq - denominationsArray[i], minCount + 1, denominationsArray) + 1 
+						 findNumberOfWaysCoinChange(sumReq - denominationsArray[i], minCount + 1, denominationsArray) + 1
 						 , minCount );	
 			}
 		}
@@ -55,7 +56,7 @@ public class CoinChangeProblem {
 	}
 	
 	// This is Dynamic Programming approach using memoization; Top-Down
-	private static int findMinCountCoinChangeDPTD(int sumReq, int[] denominationsArray, int[] minCountArray) {
+	private static int findNumberOfWaysCoinChangeDPTD(int sumReq, int[] denominationsArray, int[] minCountArray) {
 		int arraySize = denominationsArray.length;
 		
 		if(minCountArray[sumReq] != 9999) {
@@ -65,7 +66,7 @@ public class CoinChangeProblem {
 		for(int i = 0; i < arraySize; i++) {
 			if(denominationsArray[i] <= sumReq) {
 				minCountArray[sumReq] = Math.min( 
-						 findMinCountCoinChangeDPTD(sumReq - denominationsArray[i], denominationsArray, minCountArray) + 1 
+						 findNumberOfWaysCoinChangeDPTD(sumReq - denominationsArray[i], denominationsArray, minCountArray) + 1
 						 , minCountArray[sumReq] );	
 			}
 		}
@@ -75,7 +76,7 @@ public class CoinChangeProblem {
 	}
 	
 	// This is Dynamic Programming approach using memoization; Bottom-Up
-	private static int findMinCountCoinChangeDPBU(int sumReq, int[] denominationsArray) {
+	private static int findNumberOfWaysCoinChangeDPBU(int sumReq, int[] denominationsArray) {
 
 		int[] minCountArray =  new int[sumReq+1];
 		Arrays.fill(minCountArray, 9999);

@@ -1,4 +1,4 @@
-package practice.dynamicprogramming;
+package practice.dynamicprogramming.matrixchainmultiplication;
 
 import java.util.Arrays;
 
@@ -13,6 +13,7 @@ import java.util.Arrays;
  *         which order to perform the multiplications.
  *
  *         https://www.geeksforgeeks.org/?p=15553
+ *         https://www.youtube.com/watch?v=kMK148J9qEE&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=34
  *         
  *         Program also prints the optimum multiplication sequence in brackets
  *         https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/
@@ -48,7 +49,7 @@ public class MatrixChainMultiplication {
 	}
 
 	// Recursive approach
-	static int matrixChainOptimumMultiplications(int p[], int i, int j) {
+	static int matrixChainOptimumMultiplications(int[] p, int i, int j) {
 		if (i == j)
 			return 0;
 
@@ -72,14 +73,14 @@ public class MatrixChainMultiplication {
 	}
 
 	// Dynamic Programming approach, Top-Down
-	static void matrixChainOptimumMultiplicationsDPTD(int p[], int i, int j, int[][] matrix) {
+	static void matrixChainOptimumMultiplicationsDPTD(int[] p, int i, int j, int[][] matrix) {
 		if (i == j) {
 			matrix[i][j] = 0;
 			return;
 		}
 
 		int min = Integer.MAX_VALUE;
-		int temp = 0;
+		int temp;
 
 		// place parenthesis at different places between first
 		// and last matrix, recursively calculate count of
@@ -108,7 +109,7 @@ public class MatrixChainMultiplication {
 	}
 
 	// Dynamic Programming approach, Bottom-Up
-	static void matrixChainOptimumMultiplicationsDPBU(int p[], int[][] matrix) {
+	static void matrixChainOptimumMultiplicationsDPBU(int[] p, int[][] matrix) {
 		int j, temp;
 		int n = p.length;
 		for(int i=0; i<n; i++) {
@@ -124,9 +125,8 @@ public class MatrixChainMultiplication {
                 if(j == n) continue;
                 
                 matrix[i][j] = Integer.MAX_VALUE;
-                
-                temp = 0;
-                for (int k=i; k<=j-1; k++){
+
+				for (int k=i; k<=j-1; k++){
                 	temp = matrix[i][k] + matrix[k+1][j] + p[i-1]*p[k]*p[j];
                     if (temp < matrix[i][j]) {
                     	//System.out.println(i + " " + j + " = " + temp);
