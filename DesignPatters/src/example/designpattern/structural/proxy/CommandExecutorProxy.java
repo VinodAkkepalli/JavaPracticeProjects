@@ -6,10 +6,10 @@ package example.designpattern.structural.proxy;
  *
  * @author Vinod Akkepalli
  */
-public class CommandExecutorProxy implements CommandExecutor {
+public class CommandExecutorProxy implements ICommandExecutor {
 
     private boolean isAdmin;
-    private CommandExecutor executor;
+    private ICommandExecutor executor;
 
     public CommandExecutorProxy(String user, String pwd){
         if("admin_user".equals(user) && "admin".equals(pwd)) {

@@ -7,13 +7,14 @@ package example.designpattern.structural.proxy;
  *
  * @author Vinod Akkepalli
  */
-public class ClientProgram {
+public class ProxyDPTester {
 
     public static void main(String[] args) {
-        CommandExecutor executor = new CommandExecutorProxy("admin_user", "admin1");
+        ICommandExecutor executor = new CommandExecutorProxy("admin_user", "admin1");
         try {
             executor.runCommand("ls -ltr");
-            executor.runCommand(" rm -rf abc.pdf");
+            executor.runCommand("rm -rf abc.pdf");
+            executor.runCommand("notepad.exe");
         } catch (Exception e) {
             System.out.println("Exception Message::" + e.getMessage());
         }

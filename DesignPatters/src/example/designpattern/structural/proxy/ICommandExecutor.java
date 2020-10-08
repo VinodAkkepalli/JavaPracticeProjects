@@ -5,6 +5,6 @@ package example.designpattern.structural.proxy;
  *
  * @author Vinod Akkepalli
  */
-public interface CommandExecutor {
+public interface ICommandExecutor {
     public void runCommand(String cmd) throws Exception;
 }
