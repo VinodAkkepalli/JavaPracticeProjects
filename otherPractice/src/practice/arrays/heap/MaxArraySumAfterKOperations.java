@@ -1,4 +1,4 @@
-package interviews;
+package practice.arrays.heap;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,17 +28,17 @@ public class MaxArraySumAfterKOperations {
     }
 
     private static void findMaxSum(int[] arr, int numOpsAllowed) {
-        PriorityQueue<Integer> pQueue = new PriorityQueue<>(Collections.reverseOrder());
-        Arrays.stream(arr).forEach(pQueue::add);
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        Arrays.stream(arr).forEach(maxHeap::add);
 
-        System.out.println(pQueue.toString());
+        System.out.println(maxHeap.toString());
 
         while (numOpsAllowed-- > 0) {
-            pQueue.add((int) Math.ceil(pQueue.poll()/2d));
+            maxHeap.add((int) Math.ceil(maxHeap.poll()/2d));
         }
 
         AtomicInteger sum = new AtomicInteger();
-        pQueue.forEach(sum::addAndGet);
+        maxHeap.forEach(sum::addAndGet);
         System.out.println(sum);
     }
 }
