@@ -1,4 +1,4 @@
-package interviews;
+package practice.slidingwindow;
 
 /**
  * 
@@ -29,42 +29,38 @@ while curr_sum is greater than sum.
 public class SubArrayOfGivenSum {
 
 	public static void main(String[] args) {
-		int arr[] = {1, 4, 20, 3, 10, 5};
-		//int arr[] = {1, 4, 0, 0, 3, 10, 5};
-		int sum = 33;
+		int[] arr = {2, 4, 20, 3, 10, 5};
+		//int[] arr = {1, 4, 0, 0, 3, 10, 5};
+		int sum = 27;
 		
 		findSubArray(arr, sum);
-		
-
 	}
 
 	private static void findSubArray(int[] arr, int sum) {
-		int curr_sum = arr[0]; 
+		int curr_sum = arr[0];
 		int arrLen = arr.length;
-		int start = 0;	// to point to starting index
-		
-		for(int i = 1; i <= arrLen; i++){
+		int start = 0;    // to point to starting index
+
+		for (int i = 1; i <= arrLen; i++) {
 			// If curr_sum exceeds the sum, then remove the starting elements
-	        while (curr_sum > sum && start < i-1)
-	        {
-	            curr_sum = curr_sum - arr[start];
-	            start++;
-	        }
-	 
-	        // If curr_sum becomes equal to sum, then return
-	        if (curr_sum == sum)
-	        {
-	            System.out.println("Sum found between indexes "+  start + " to " + (i-1));
-	            return;
-	        }
-	 
-	        // Add this element to curr_sum
-	        if (i < arrLen)
-	          curr_sum = curr_sum + arr[i];
-	    }
-	 
-	    // If we reach here, then no subarray
-	    System.out.println("No subarray found");
-	    return;
+			while (curr_sum > sum && start < i - 1) {
+				curr_sum = curr_sum - arr[start];
+				start++;
+			}
+
+			// If curr_sum becomes equal to sum, then return
+			if (curr_sum == sum) {
+				System.out.println("Sum found between indexes " + start + " to " + (i - 1));
+				return;
+			}
+
+			// Add this element to curr_sum
+			if (i < arrLen) {
+				curr_sum = curr_sum + arr[i];
+			}
+		}
+
+		// If we reach here, then no subarray
+		System.out.println("No subarray found");
 	}
 }
