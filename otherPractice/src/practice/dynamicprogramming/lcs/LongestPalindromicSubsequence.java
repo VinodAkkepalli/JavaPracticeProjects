@@ -5,16 +5,37 @@ package practice.dynamicprogramming.lcs;
  * @author Vinod Akkepalli
  *
  *	problem statement: Given a sequence, find the length of the longest palindromic subsequence in it
- *	https://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/	
+ *	https://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
+ *	https://www.youtube.com/watch?v=wuOOOATz_IA&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=26
  */
 public class LongestPalindromicSubsequence {
 
 	public static void main(String[] args) {
 		String str = "GEEKSFORGEEKS";
-		System.out.println("Length of Longest Palindromic Subsequence is: " + 
-				longestPalindromicSubsequenceDP(str));
-		System.out.println("Length of Longest Palindromic Subsequence is: " + 
-				longestPalindromicSubsequenceRec(str, 0, str.length()-1));
+
+		//Using Longest Common Subsequence algorithm
+		System.out.println(LongestCommonSubsequence.longestCommonSubsequenceRec(str.toCharArray(),
+				new StringBuilder(str).reverse().toString().toCharArray(),
+				str.length(), str.length()));
+		System.out.println(LongestCommonSubsequence.longestCommonSubsequenceDPBU(str.toCharArray(),
+				new StringBuilder(str).reverse().toString().toCharArray()));
+
+		System.out.println(longestPalindromicSubsequenceRec(str, 0, str.length()-1));
+		System.out.println(longestPalindromicSubsequenceDP(str));
+	}
+
+	private static int longestPalindromicSubsequenceRec(String inStr, int i, int j) {
+
+		if(i == j) {
+			return 1;
+		} else if (inStr.charAt(i) == inStr.charAt(j) && (i+1 == j)) {
+			return 2;
+		} else if(inStr.charAt(i) == inStr.charAt(j)){
+			return longestPalindromicSubsequenceRec(inStr, i+1, j-1) + 2;
+		} else {
+			return Math.max(longestPalindromicSubsequenceRec(inStr, i+1, j),
+					longestPalindromicSubsequenceRec(inStr, i, j-1));
+		}
 	}
 
 	// Time complexity of this Dynamic Programming approach is O(n^2)
@@ -29,9 +50,6 @@ public class LongestPalindromicSubsequence {
 		}
 		int j;
 
-		/*
-		 * This procedure resembles matrix chain multiplication problem
-		 */
 		// lss is length of substring
 		for (int lss = 2; lss <= sLength; lss++) {
 
@@ -55,17 +73,5 @@ public class LongestPalindromicSubsequence {
 	}
 
 	
-	private static int longestPalindromicSubsequenceRec(String inStr, int i, int j) {
-		
-		if(i == j) {
-			return 1;
-		} else if (inStr.charAt(i) == inStr.charAt(j) && (i+1 == j)) {
-			return 2;
-		} else if(inStr.charAt(i) == inStr.charAt(j)){
-			return longestPalindromicSubsequenceRec(inStr, i+1, j-1) + 2;
-		} else {
-			return Math.max(longestPalindromicSubsequenceRec(inStr, i+1, j),
-					longestPalindromicSubsequenceRec(inStr, i, j-1)); 
-		}
-	}
+
 }
