@@ -39,7 +39,7 @@ public class LongestPalindromicSubsequence {
 	}
 
 	// Time complexity of this Dynamic Programming approach is O(n^2)
-	private static int longestPalindromicSubsequenceDP(String inStr) {
+	static int longestPalindromicSubsequenceDP(String inStr) {
 		char[] cStr = inStr.toCharArray();
 		int sLength = cStr.length;
 		int[][] lps = new int[sLength][sLength];

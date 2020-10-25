@@ -1,4 +1,4 @@
-package practice.dynamicprogramming;
+package practice.dynamicprogramming.lcs;
 
 /**
  * 
@@ -7,6 +7,7 @@ package practice.dynamicprogramming;
  * 		Given two strings str1 and str2. Find minimum number of edits (operations)
  *		required to convert str1 into str2. Allowed operations are:    Insert, Remove & Replace
  *      https://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/
+ *      https://www.youtube.com/watch?v=-fx6aDxcWyg&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=25
  */
 
 public class EditDistanceBetweenStrings {
@@ -46,33 +47,17 @@ public class EditDistanceBetweenStrings {
 
 	// Dynamic Programming approach with TC O(len1*len2)
 	static int editDistDP(String str1, String str2, int len1, int len2) {
-		// Create a table to store results of subproblems
-		int dist[][] = new int[len1 + 1][len2 + 1];
+		int[][] dist = new int[len1 + 1][len2 + 1];
 
-		// Fill d[][] in bottom up manner
 		for (int i = 0; i <= len1; i++) {
 			for (int j = 0; j <= len2; j++) {
-				// If first string is empty, only option is to
-				// insert all characters of second string
 				if (i == 0) {
 					dist[i][j] = j; // Min# operations = j
-				}
-
-				// If second string is empty, only option is to
-				// remove all characters of second string
-				else if (j == 0) {
+				} else if (j == 0) {
 					dist[i][j] = i; // Min# operations = i
-				}
-
-				// If last characters are same, ignore last char
-				// and recur for remaining string
-				else if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+				} else if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
 					dist[i][j] = dist[i - 1][j - 1];
-				}
-
-				// If last characters are different, consider all
-				// possibilities and find minimum
-				else {
+				} else {
 					dist[i][j] = 1 + Math.min(dist[i][j - 1], // Insert
 							Math.min(dist[i - 1][j], // Remove
 									dist[i - 1][j - 1])); // Replace
