@@ -25,6 +25,7 @@ public class ThreadLocalDemo implements Runnable {
             e.printStackTrace();
         }
 
+        t1.start();
         System.out.println("**values accessed from main thread**");
         System.out.println("Shared Integer is: " + sharedObject.shareInteger);
         System.out.println("ThreadLocal Object reference is: " + sharedObject.integerThreadLocal);

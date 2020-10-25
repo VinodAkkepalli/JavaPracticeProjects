@@ -4,8 +4,8 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 
- * <b>Description</b> : code to demonstrate CountDownLatch CountDownLatch waits
- * for the specified number of tasks to complete their execution before
+ * <b>Description</b> : code to demonstrate CountDownLatch
+ * CountDownLatch waits for the specified number of tasks to complete their execution before
  * proceeding forward with its execution
  * 
  * @author Vinod Akkepalli

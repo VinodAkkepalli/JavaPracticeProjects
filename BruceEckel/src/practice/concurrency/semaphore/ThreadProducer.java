@@ -16,8 +16,8 @@ public class ThreadProducer implements Runnable {
 
 	private final Queue<Integer> pool;
 	private final String name;
-	private Semaphore producerSemaphore;
-	private Semaphore consumerSemaphore;
+	private final Semaphore producerSemaphore;
+	private final Semaphore consumerSemaphore;
 
 
 	public ThreadProducer(Queue<Integer> poolQueue, String name, Semaphore ps, Semaphore cs) {

@@ -58,6 +58,9 @@ public class FlatMapDemo {
         list.stream().flatMapToDouble(num -> DoubleStream.of(Double.parseDouble(num)))
                 .forEach(System.out::println);
 
+       //Can be done without using flatmap as below
+//        List<Double> nl = list.stream().map(Double::valueOf).collect(Collectors.toList());
+//        System.out.println(nl);
         /*======================*/
 
         List<String> stringList = List.of(

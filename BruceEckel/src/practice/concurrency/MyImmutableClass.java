@@ -1,7 +1,7 @@
 package practice.concurrency;
 
 public class MyImmutableClass {
-    private int value;
+    private final int value;
 
     private MyImmutableClass(int value){
         this.value = value;

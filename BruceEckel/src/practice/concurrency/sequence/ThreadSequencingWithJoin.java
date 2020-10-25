@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class ThreadSequencingWithJoin implements Runnable {
 
-	private String name;
+	private final String name;
 
 	public ThreadSequencingWithJoin(String name) {
 		this.name = name;
@@ -24,10 +24,6 @@ public class ThreadSequencingWithJoin implements Runnable {
 		return name;
 	}
 
-	/**
-	 * @param args
-	 * @throws InterruptedException
-	 */
 	public static void main(String[] args) throws InterruptedException {
 		ThreadSequencingWithJoin obj1 = new ThreadSequencingWithJoin("T1");
 		ThreadSequencingWithJoin obj2 = new ThreadSequencingWithJoin("T2");

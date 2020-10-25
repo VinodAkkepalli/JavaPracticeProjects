@@ -23,7 +23,7 @@ public class IntStreamsPractice {
 
         System.out.println();
 
-        System.out.println("*****Geneate integers using intSupplier*****");
+        System.out.println("*****Generate integers using intSupplier*****");
         IntSupplier intSupplier = () -> (int) (Math.random() * 10);
         for (int i = 0; i < 10; i++) {
             System.out.println(i + " --> " +intSupplier.getAsInt());
@@ -31,7 +31,7 @@ public class IntStreamsPractice {
 
         System.out.println();
 
-        System.out.println("*****Geneate integers using IntStream.generate()*****");
+        System.out.println("*****Generate integers using IntStream.generate()*****");
         IntStream.generate(intSupplier)
                 .limit(5)
                 .forEach(System.out::println);
@@ -65,7 +65,6 @@ public class IntStreamsPractice {
         arr = new int[]{1, 2, 3, 5, 3};
         System.out.println("Distinct of a array " + Arrays.toString(arr) + ": ");
         Arrays.stream(arr).distinct().forEach(System.out::println);
-        System.out.println("Original array: " + Arrays.toString(arr) + " remains unchanged");
 
         int[] collect = Arrays.stream(arr).distinct().toArray();
         System.out.println("Distinct array collected: " + Arrays.toString(collect));
@@ -80,14 +79,7 @@ public class IntStreamsPractice {
         List<Integer> collectList = Arrays.stream(arr).sorted()
                 .boxed()
                 .collect(Collectors.toList());
-        System.out.print("max of list: ");
-        collectList.remove(Integer.valueOf(1));
-        System.out.println(collectList.toString());
-        Optional<Integer> opt1 = collectList.stream().max((o1, o2) -> {
-            int max = o2;
-            if(o1 > o2)  max = o1;
-            return max;
-        });
+        Optional<Integer> opt1 = collectList.stream().reduce((a, b) -> a > b ? a : b);
         System.out.print("max of list: ");
         System.out.println(opt1.isPresent()? opt1.get(): "not there");
         System.out.println("sorted array: " + collectList.toString());
@@ -98,7 +90,6 @@ public class IntStreamsPractice {
         System.out.println("Smallest 4 numbers of the array: "
                 + Arrays.toString(Arrays.stream(arr).sorted().limit(4).toArray()));
 
-        System.out.println("Original array: " + Arrays.toString(arr) + " remains unchanged");
         System.out.println("Array size: " + Arrays.stream(arr).count());
 
         System.out.println("All integers of arrays doubled: "
@@ -118,9 +109,8 @@ public class IntStreamsPractice {
                 .orElse(0);
         System.out.println("First element greater than 5: " + a);
 
-        int[] arr1 = {};
-        System.out.println(Arrays.toString(arr1) + "Array has atleast one even number : "
-                + Arrays.stream(arr1)
+        System.out.println(Arrays.toString(arr) + "Array has at least one even number : "
+                + Arrays.stream(arr)
                 .anyMatch(i -> i % 2 == 0));
 
         System.out.println(Arrays.toString(arr) + "All numbers of array are  odd numbers : "

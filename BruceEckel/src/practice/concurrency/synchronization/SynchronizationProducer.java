@@ -13,7 +13,7 @@ import java.util.Queue;
 public class SynchronizationProducer implements Runnable {
 
 	private final Queue<Integer> pool;
-	private String name;
+	private final String name;
 	private final int maxSize;
 
 	public SynchronizationProducer(Queue<Integer> poolQueue, int maxSize,

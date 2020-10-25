@@ -10,7 +10,7 @@ import java.util.concurrent.FutureTask;
 /**
  * 
  * <b>Description</b> : Demonstration of FutureTask which can be used to wrap a
- * Runnable or Callable Object. FutureTask can be submitted to an Executor.
+ * Runnable or Callable Object. FutureTask can be submitted to an executor pool.
  * This class provides a base implementation of Future,
  * with methods to start and cancel a computation, query to see if the
  * computation is complete, and retrieve the result of the computation
@@ -19,9 +19,6 @@ import java.util.concurrent.FutureTask;
  *
  */
 public class FutureTaskDemo {
-
-	public static final ExecutorService threadPool = Executors
-			.newFixedThreadPool(3);
 
 	public static void main(String[] args)
 			throws InterruptedException, ExecutionException {

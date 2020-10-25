@@ -15,8 +15,8 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class ThreadSequencingWithCyclicBarrier implements Runnable {
 
-	private String name;
-	private CyclicBarrier count;
+	private final String name;
+	private final CyclicBarrier count;
 
 	public ThreadSequencingWithCyclicBarrier(String name, CyclicBarrier cdl) {
 		this.name = name;
@@ -27,10 +27,6 @@ public class ThreadSequencingWithCyclicBarrier implements Runnable {
 		return name;
 	}
 
-	/**
-	 * @param args
-	 * @throws InterruptedException
-	 */
 	public static void main(String[] args) throws InterruptedException {
 
 		CyclicBarrier count = new CyclicBarrier(3, new Runnable() {

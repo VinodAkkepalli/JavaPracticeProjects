@@ -1,6 +1,7 @@
 package practice.concurrency.locks;
 
 import java.util.Queue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
@@ -14,8 +15,8 @@ import java.util.concurrent.locks.Lock;
  */
 public class ThreadProducer implements Runnable {
 
-	private Queue<Integer> pool;
-	private int capacity;
+	private final Queue<Integer> pool;
+	private final int capacity;
 	Lock lock;
 
 	// condition1 for checking if the pool is empty
@@ -36,8 +37,12 @@ public class ThreadProducer implements Runnable {
 		int i;
 		boolean isAdded;
 		while (true) {
-			lock.lock();
-
+//			lock.lock();
+			try {
+				lock.tryLock(1000, TimeUnit.MILLISECONDS);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			try {
 				if (pool.size() == this.capacity) {
 					System.out.println(

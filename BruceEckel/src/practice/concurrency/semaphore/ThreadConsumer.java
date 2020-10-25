@@ -6,7 +6,7 @@ import java.util.concurrent.Semaphore;
 public class ThreadConsumer implements Runnable {
 
 	private final Queue<Integer> pool;
-	private String name;
+	private final String name;
 	Semaphore producerSemaphore;
 	Semaphore consumerSemaphore;
 

@@ -15,8 +15,8 @@ import java.util.concurrent.CountDownLatch;
 
 public class ThreadSequencingWithCountDownLatch implements Runnable {
 
-	private String name;
-	private CountDownLatch count;
+	private final String name;
+	private final CountDownLatch count;
 
 	public ThreadSequencingWithCountDownLatch(String name, CountDownLatch cdl) {
 		this.name = name;
@@ -27,10 +27,6 @@ public class ThreadSequencingWithCountDownLatch implements Runnable {
 		return name;
 	}
 
-	/**
-	 * @param args
-	 * @throws InterruptedException
-	 */
 	public static void main(String[] args) throws InterruptedException {
 
 		CountDownLatch count = new CountDownLatch(3);
