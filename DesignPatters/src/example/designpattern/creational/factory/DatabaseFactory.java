@@ -4,8 +4,7 @@ public class DatabaseFactory {
 	
 	public DatabaseFactory() {}
 	
-	public Connection createConnection(String dbName){
-		//return "test connection to database " + this.dbName + " is successful!!";
+	public IConnection createConnection(String dbName){
 		if(dbName.equals("Oracle")){
 			return new OracleConnection();
 		}else if(dbName.equals("MySql")){

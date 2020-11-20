@@ -3,7 +3,8 @@ package example.designpattern.creational.builder;
 /**
  * <b>Description</b> : Using builder to get the object in a single line of code and
  * without any inconsistent state or arguments management issues
- *
+ * https://www.journaldev.com/1425/builder-design-pattern-in-java
+ * https://youtu.be/D5NK5qMM14g
  * @author Vinod Akkepalli
  */
 
